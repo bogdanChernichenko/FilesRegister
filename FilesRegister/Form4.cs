@@ -6,13 +6,21 @@ namespace FilesRegister
 {
     public partial class Form4 : Form
     {
+        string _role;
         Form2 f2 = new Form2();
-
+        
         public Form4()
         {
             InitializeComponent();
         }
 
+        public Form4(string role)
+        {
+            InitializeComponent();
+            _role = role;
+        }
+
+        //Вернуться к таблище
         private void button1_Click(object sender, EventArgs e)
         {
             Dispose();
@@ -21,7 +29,11 @@ namespace FilesRegister
 
         private void Form4_Load(object sender, EventArgs e)
         {
-
+            if (_role != "Админ")
+            {
+                this.textBox1.ReadOnly = true;
+                this.textBox2.ReadOnly = true;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -30,6 +42,7 @@ namespace FilesRegister
             
         }
 
+        //метод добавления данных в базу
         private void AddInfoToDatabase()
         {
             // название процедуры
@@ -46,7 +59,8 @@ namespace FilesRegister
                 SqlParameter napravlenie = new SqlParameter
                 {
                     ParameterName = "@Направление",
-                    Value = comboBox1.Text
+                   // Value = comboBox1.Text
+                   Value = comboBox4.Text
                 };
                 command.Parameters.Add(napravlenie);
 
@@ -81,6 +95,13 @@ namespace FilesRegister
                     Value = textBox4.Text
                 };
                 command.Parameters.Add(contrAgent);
+
+                SqlParameter dogovorNum = new SqlParameter
+                {
+                    ParameterName = "@НомерДоговора",
+                    Value = textBox9.Text
+                };
+                command.Parameters.Add(dogovorNum);
 
                 //Помещение
                 SqlParameter builing = new SqlParameter
@@ -147,9 +168,26 @@ namespace FilesRegister
             }
         }
 
+        //Событие для умерщвления формы при жмаканьи на хрестик
         private void Form4_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
+
+        //Выпадающее меню Вавилон заполняет 2 текстовых поля под ним какой-то хернёй
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox4.Text == "Вавилон")
+            {
+                textBox1.Text = "Маршала Малиновского ул., 2, г. Днепр";
+                textBox2.Text = "Вавилон-1, МФЦ";
+            }
+            else
+            {
+                textBox1.Text = "Какой-то адрес";
+                textBox2.Text = "Ещё какая-то надпись";
+            }
+        }
+
     }
 }

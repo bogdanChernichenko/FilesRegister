@@ -7,7 +7,8 @@ namespace FilesRegister
 {
     public partial class Form1 : Form
     {
-
+        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
+        public string role;
         public Form1()
         {
             InitializeComponent();
@@ -18,12 +19,12 @@ namespace FilesRegister
 
         }
 
+        //Вход
         private void button1_Click(object sender, EventArgs e)
         {
-            Form f2 = new Form2();
             string sLogin = LoginBox.Text;
             string sPassword = PassBox.Text;
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
+            
             string sqlExpression = "sp_getUsers";
             List<string> credentials = new List<string>();
             bool flag = false;
@@ -46,37 +47,38 @@ namespace FilesRegister
                     }
                 }
                 reader.Close();
+            }
                 //Проверяем наличие указанного пользователя в базе дегенератским перебором
                 for (int i = 0; i < credentials.Count;i+=3)
                 {
                     if (LoginBox.Text == credentials[i] && PassBox.Text == credentials[i + 1])
                         {
                             flag = true;
+                            Form2 f2q = new Form2(credentials[i + 2]);
+                            f2q.Show();
+                            this.Hide();
                         }
                 }
-                if (flag)
+                if (flag == false)
                 {
-                    f2.Show();
-                    this.Hide();
+                MessageBox.Show("Указанная комбинация логина и пароля не найдена в базе");
                 }
-                else
-                {
-                    MessageBox.Show("Указанная комбинация логина и пароля не найдена в базе");
-                }
-            }
-        }   //Вход
 
+        }   
+
+        //умри,сука
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }   //умри,сука
+        }   
 
+        //создание нового юзера
         private void button3_Click(object sender, EventArgs e)
         {
             Form f3 = new Form3();
             f3.Show();
             this.Hide();
-        }   //создание нового юзера
+        }   
 
     }
 }
