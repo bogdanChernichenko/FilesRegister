@@ -96,7 +96,6 @@ namespace FilesRegister
             string sqlExpression = "sp_getUsers";
             List<string> credentials = new List<string>();
 
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

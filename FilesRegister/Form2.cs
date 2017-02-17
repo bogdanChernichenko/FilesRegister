@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace FilesRegister
@@ -13,11 +15,7 @@ namespace FilesRegister
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "database1DataSet1.Documents". При необходимости она может быть перемещена или удалена.
-            this.documentsTableAdapter.Fill(this.database1DataSet1.Documents);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "database1DataSet.Credentials". При необходимости она может быть перемещена или удалена.
-            //this.credentialsTableAdapter.Fill(this.database1DataSet.Credentials);
-
+            this.documentsTableAdapter1.Fill(this.database1DataSet2.Documents); 
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,6 +36,34 @@ namespace FilesRegister
             Form4 f4 = new Form4();
             Dispose();
             f4.Show();
+        }
+
+        private void Form2_Activated(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
+           
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter("Select * from Documents", connection);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds, "Documents");
+
+                dataGridView1.DataSource = ds.Tables[0];
+                connection.Close();
+            }
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count;i++)
+            {
+                dataGridView1.Rows[i].Cells[0].Value = i + 1;
+            }
+            
         }
     }
 }
