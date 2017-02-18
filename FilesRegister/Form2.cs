@@ -16,7 +16,7 @@ namespace FilesRegister
             InitializeComponent();
         }
 
-        //костыльный конструтор получающий роль
+        //костыльный конструтор получающий роль и запрещающий редачить поля не одмену
         public Form2 (string role)
             {
             InitializeComponent();
@@ -62,21 +62,7 @@ namespace FilesRegister
         //обновляем таблицу при активации формы
         private void Form2_Activated(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
-           
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                SqlDataAdapter da = new SqlDataAdapter("Select * from Documents", connection);
-                SqlCommandBuilder cb = new SqlCommandBuilder(da);
-
-                DataSet ds = new DataSet();
-                da.Fill(ds, "Documents");
-
-                dataGridView1.DataSource = ds.Tables[0];
-                connection.Close();
-            }
+            UpdateGrid();
         }
 
         //колонка-счётчик-шмётчик
@@ -89,5 +75,39 @@ namespace FilesRegister
             
         }
 
+        //Событие для обновления базы при редактировании ячейки...это было круто
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
+            
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                
+                SqlDataAdapter da = new SqlDataAdapter("UPDATE Documents set " + dataGridView1.Columns[e.ColumnIndex].HeaderText + " =" + "N'" +dataGridView1[e.ColumnIndex, e.RowIndex].FormattedValue + "'" + "WHERE ID =" + "'"+ dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()+ "'", connection);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                da.Update(dt);
+            }
+        }
+
+        //метод для обновления базы
+        private void UpdateGrid ()
+        {
+            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter("Select * from Documents", connection);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
+
+                DataSet ds = new DataSet();
+                da.Fill(ds, "Documents");
+
+                dataGridView1.DataSource = ds.Tables[0];
+            }
+        }
     }
 }
