@@ -1,4 +1,6 @@
-﻿namespace FilesRegister
+﻿using System.Windows.Forms;
+
+namespace FilesRegister
 {
     partial class Form2
     {
@@ -20,6 +22,14 @@
             base.Dispose(disposing);
         }
 
+        public class DataGridViewEx : DataGridView
+        {
+            public DataGridViewEx()
+                : base()
+            {
+                SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
+            }
+        }
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -31,12 +41,12 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new DataGridViewEx();
             this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet3 = new FilesRegister.Database1DataSet3();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.documentsTableAdapter = new FilesRegister.Database1DataSet3TableAdapters.DocumentsTableAdapter();
-            this.Counter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Counter = new DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.направлениеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.адресDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
