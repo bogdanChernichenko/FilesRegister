@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace FilesRegister
@@ -20,14 +21,12 @@ namespace FilesRegister
         public Form2 (string role)
             {
             InitializeComponent();
+            this.KeyPreview = true;
             _role = role;
 
             if (_role != "Админ")
             {
-                this.адресDataGridViewTextBoxColumn.ReadOnly = true;
-                this.наименованиеОбъектаDataGridViewTextBoxColumn.ReadOnly = true;
-                this.юрЛицоКорпорацииDataGridViewTextBoxColumn.ReadOnly = true;
-                this.направлениеDataGridViewTextBoxColumn.ReadOnly = true;
+                this.button2.Visible = false;
             }
             }
 
@@ -55,14 +54,7 @@ namespace FilesRegister
         private void button2_Click(object sender, EventArgs e)
         {
             Form4 f4 = new Form4(_role);
-            Dispose();
-            f4.Show();
-        }
-
-        //обновляем таблицу при активации формы
-        private void Form2_Activated(object sender, EventArgs e)
-        {
-            UpdateGrid();
+            f4.ShowDialog();
         }
 
         //колонка-счётчик-шмётчик
@@ -79,15 +71,33 @@ namespace FilesRegister
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
-            
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            String s = "";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                
-                SqlDataAdapter da = new SqlDataAdapter("UPDATE Documents set " + dataGridView1.Columns[e.ColumnIndex].HeaderText + " =" + "N'" +dataGridView1[e.ColumnIndex, e.RowIndex].FormattedValue + "'" + "WHERE ID =" + "'"+ dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()+ "'", connection);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                da.Update(dt);
+
+                //эвейдим баг с форматом даты при корректировке даты
+                if (dataGridView1.Columns[e.ColumnIndex].HeaderText.ToString() == "ДатаОкончанияДоговора")
+                {
+                    s = dataGridView1[e.ColumnIndex, e.RowIndex].FormattedValue.ToString();
+                    string sDays = s.Substring(0,2);
+                    string sMonth = s.Substring(3,2);
+                    string sYear = s.Substring(6,4);
+                    s = sYear +"."+ sMonth +"." + sDays;
+
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE Documents set " + dataGridView1.Columns[e.ColumnIndex].HeaderText + " =" + "N'" + s + "'" + "WHERE ID =" + "'" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", connection);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    da.Update(dt);
+                }
+                else
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE Documents set " + dataGridView1.Columns[e.ColumnIndex].HeaderText + " =" + "N'" + dataGridView1[e.ColumnIndex, e.RowIndex].FormattedValue + "'" + "WHERE ID =" + "'" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", connection);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    da.Update(dt);
+                }
             }
         }
 
@@ -109,5 +119,30 @@ namespace FilesRegister
                 dataGridView1.DataSource = ds.Tables[0];
             }
         }
+
+        //Открываем редактирование записи по двойному клику
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Form5 f5 = new Form5(_role, dataGridView1[1, e.RowIndex].FormattedValue.ToString());
+            f5.ShowDialog();
+        }
+
+        //Обновить таблицу
+        private void button3_Click(object sender, EventArgs e)
+        {
+            UpdateGrid();
+        }
+
+        //Хоткей для фильтра
+        private void Form2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+
+                Form7 f7 = new Form7();
+                f7.ShowDialog();
+            }
+        }
+
     }
 }

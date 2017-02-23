@@ -41,12 +41,8 @@ namespace FilesRegister
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new DataGridViewEx();
-            this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.database1DataSet3 = new FilesRegister.Database1DataSet3();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.documentsTableAdapter = new FilesRegister.Database1DataSet3TableAdapters.DocumentsTableAdapter();
-            this.Counter = new DataGridViewTextBoxColumn();
+            this.dataGridView1 = new FilesRegister.Form2.DataGridViewEx();
+            this.Counter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.направлениеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.адресDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,10 +57,17 @@ namespace FilesRegister
             this.датаОкончанияДоговораDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.документыDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.документВыданDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.database1DataSet3 = new FilesRegister.Database1DataSet3();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.documentsTableAdapter = new FilesRegister.Database1DataSet3TableAdapters.DocumentsTableAdapter();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet3)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -116,34 +119,12 @@ namespace FilesRegister
             this.dataGridView1.DataSource = this.documentsBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(791, 366);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(1005, 306);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
-            // 
-            // documentsBindingSource
-            // 
-            this.documentsBindingSource.DataMember = "Documents";
-            this.documentsBindingSource.DataSource = this.database1DataSet3;
-            // 
-            // database1DataSet3
-            // 
-            this.database1DataSet3.DataSetName = "Database1DataSet3";
-            this.database1DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 369);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(789, 35);
-            this.flowLayoutPanel1.TabIndex = 4;
-            // 
-            // documentsTableAdapter
-            // 
-            this.documentsTableAdapter.ClearBeforeFill = true;
             // 
             // Counter
             // 
@@ -160,6 +141,7 @@ namespace FilesRegister
             this.Column1.DataPropertyName = "Id";
             this.Column1.HeaderText = "BaseId";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
             // 
             // направлениеDataGridViewTextBoxColumn
@@ -168,6 +150,7 @@ namespace FilesRegister
             this.направлениеDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.направлениеDataGridViewTextBoxColumn.HeaderText = "Направление";
             this.направлениеDataGridViewTextBoxColumn.Name = "направлениеDataGridViewTextBoxColumn";
+            this.направлениеDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // адресDataGridViewTextBoxColumn
             // 
@@ -175,6 +158,7 @@ namespace FilesRegister
             this.адресDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.адресDataGridViewTextBoxColumn.HeaderText = "Адрес";
             this.адресDataGridViewTextBoxColumn.Name = "адресDataGridViewTextBoxColumn";
+            this.адресDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // наименованиеОбъектаDataGridViewTextBoxColumn
             // 
@@ -182,6 +166,7 @@ namespace FilesRegister
             this.наименованиеОбъектаDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.наименованиеОбъектаDataGridViewTextBoxColumn.HeaderText = "НаименованиеОбъекта";
             this.наименованиеОбъектаDataGridViewTextBoxColumn.Name = "наименованиеОбъектаDataGridViewTextBoxColumn";
+            this.наименованиеОбъектаDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // юрЛицоКорпорацииDataGridViewTextBoxColumn
             // 
@@ -189,6 +174,7 @@ namespace FilesRegister
             this.юрЛицоКорпорацииDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.юрЛицоКорпорацииDataGridViewTextBoxColumn.HeaderText = "ЮрЛицоКорпорации";
             this.юрЛицоКорпорацииDataGridViewTextBoxColumn.Name = "юрЛицоКорпорацииDataGridViewTextBoxColumn";
+            this.юрЛицоКорпорацииDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // контрагентDataGridViewTextBoxColumn
             // 
@@ -196,6 +182,7 @@ namespace FilesRegister
             this.контрагентDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.контрагентDataGridViewTextBoxColumn.HeaderText = "Контрагент";
             this.контрагентDataGridViewTextBoxColumn.Name = "контрагентDataGridViewTextBoxColumn";
+            this.контрагентDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // номерДоговораDataGridViewTextBoxColumn
             // 
@@ -203,6 +190,7 @@ namespace FilesRegister
             this.номерДоговораDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.номерДоговораDataGridViewTextBoxColumn.HeaderText = "НомерДоговора";
             this.номерДоговораDataGridViewTextBoxColumn.Name = "номерДоговораDataGridViewTextBoxColumn";
+            this.номерДоговораDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // помещениеDataGridViewTextBoxColumn
             // 
@@ -210,6 +198,7 @@ namespace FilesRegister
             this.помещениеDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.помещениеDataGridViewTextBoxColumn.HeaderText = "Помещение";
             this.помещениеDataGridViewTextBoxColumn.Name = "помещениеDataGridViewTextBoxColumn";
+            this.помещениеDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // площадьDataGridViewTextBoxColumn
             // 
@@ -217,6 +206,7 @@ namespace FilesRegister
             this.площадьDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.площадьDataGridViewTextBoxColumn.HeaderText = "Площадь";
             this.площадьDataGridViewTextBoxColumn.Name = "площадьDataGridViewTextBoxColumn";
+            this.площадьDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // аренднаяСтавкаDataGridViewTextBoxColumn
             // 
@@ -224,6 +214,7 @@ namespace FilesRegister
             this.аренднаяСтавкаDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.аренднаяСтавкаDataGridViewTextBoxColumn.HeaderText = "АренднаяСтавка";
             this.аренднаяСтавкаDataGridViewTextBoxColumn.Name = "аренднаяСтавкаDataGridViewTextBoxColumn";
+            this.аренднаяСтавкаDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // другиеПлатежиDataGridViewTextBoxColumn
             // 
@@ -231,6 +222,7 @@ namespace FilesRegister
             this.другиеПлатежиDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.другиеПлатежиDataGridViewTextBoxColumn.HeaderText = "ДругиеПлатежи";
             this.другиеПлатежиDataGridViewTextBoxColumn.Name = "другиеПлатежиDataGridViewTextBoxColumn";
+            this.другиеПлатежиDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // датаОкончанияДоговораDataGridViewTextBoxColumn
             // 
@@ -238,6 +230,7 @@ namespace FilesRegister
             this.датаОкончанияДоговораDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.датаОкончанияДоговораDataGridViewTextBoxColumn.HeaderText = "ДатаОкончанияДоговора";
             this.датаОкончанияДоговораDataGridViewTextBoxColumn.Name = "датаОкончанияДоговораDataGridViewTextBoxColumn";
+            this.датаОкончанияДоговораDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // документыDataGridViewTextBoxColumn
             // 
@@ -245,6 +238,7 @@ namespace FilesRegister
             this.документыDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.документыDataGridViewTextBoxColumn.HeaderText = "Документы";
             this.документыDataGridViewTextBoxColumn.Name = "документыDataGridViewTextBoxColumn";
+            this.документыDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // документВыданDataGridViewTextBoxColumn
             // 
@@ -252,24 +246,61 @@ namespace FilesRegister
             this.документВыданDataGridViewTextBoxColumn.FillWeight = 91.29247F;
             this.документВыданDataGridViewTextBoxColumn.HeaderText = "ДокументВыдан";
             this.документВыданDataGridViewTextBoxColumn.Name = "документВыданDataGridViewTextBoxColumn";
+            this.документВыданDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // documentsBindingSource
+            // 
+            this.documentsBindingSource.DataMember = "Documents";
+            this.documentsBindingSource.DataSource = this.database1DataSet3;
+            // 
+            // database1DataSet3
+            // 
+            this.database1DataSet3.DataSetName = "Database1DataSet3";
+            this.database1DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.button2);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.button3);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 309);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1003, 35);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(445, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(123, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Обновить таблицу";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // documentsTableAdapter
+            // 
+            this.documentsTableAdapter.ClearBeforeFill = true;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 404);
+            this.ClientSize = new System.Drawing.Size(1003, 344);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form2";
             this.Text = "Главное окно";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Activated += new System.EventHandler(this.Form2_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet3)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -278,7 +309,6 @@ namespace FilesRegister
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Database1DataSet3 database1DataSet3;
         private System.Windows.Forms.BindingSource documentsBindingSource;
@@ -298,5 +328,8 @@ namespace FilesRegister
         private System.Windows.Forms.DataGridViewTextBoxColumn датаОкончанияДоговораDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn документыDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn документВыданDataGridViewTextBoxColumn;
+        private DataGridViewEx dataGridView1;
+        private BindingSource bindingSource1;
+        private Button button3;
     }
 }

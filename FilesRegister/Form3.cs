@@ -42,7 +42,15 @@ namespace FilesRegister
                 }
                 else
                 {
-                    AddUserSQL();
+                    if (comboBox1.Text == "Админ")
+                    {
+                        Form6 f6 = new Form6();
+                        f6.ShowDialog();
+                        if (f6.secretPassword == true)
+                        {
+                            AddUserSQL();
+                        }
+                    }
                 }
              }
           }     //создание нового пользователя

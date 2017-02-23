@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -24,7 +26,6 @@ namespace FilesRegister
         private void button1_Click(object sender, EventArgs e)
         {
             Dispose();
-            f2.Show();
         }
 
         private void Form4_Load(object sender, EventArgs e)
@@ -36,16 +37,16 @@ namespace FilesRegister
             }
         }
 
+        //Кнопка добавить запись
         private void button3_Click(object sender, EventArgs e)
         {
             AddInfoToDatabase();
-            
         }
 
         //метод добавления данных в базу
         private void AddInfoToDatabase()
         {
-            // название процедуры
+           
             string sqlExpression = "sp_AddInfo";
             string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
 
@@ -53,13 +54,12 @@ namespace FilesRegister
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(sqlExpression, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandType = CommandType.StoredProcedure;
 
                 //Направление
                 SqlParameter napravlenie = new SqlParameter
                 {
                     ParameterName = "@Направление",
-                   // Value = comboBox1.Text
                    Value = comboBox4.Text
                 };
                 command.Parameters.Add(napravlenie);
@@ -155,23 +155,24 @@ namespace FilesRegister
                 command.Parameters.Add(documents);
 
                 //Документ выдан
+                dateTimePicker2.Format = DateTimePickerFormat.Custom;
+                dateTimePicker2.CustomFormat = "yyyy.MM.dd";
+                string document;
+                List<string> documentBroughtList = new List<string>();
+
+                document = comboBox3.Text + " \n " + textBox10.Text + " \n " + dateTimePicker2.Text + " \n " + textBox11.Text;
+                //documentBroughtList2.AddRange(documentBroughtList);
                 SqlParameter documentsBroughtBy = new SqlParameter
                 {
                     ParameterName = "@ДокументВыдан",
-                    Value = comboBox3.Text
+                    Value = document
                 };
                 command.Parameters.Add(documentsBroughtBy);
-
+               
                 command.ExecuteNonQuery();
 
                 MessageBox.Show("Запись добавлена успешно!");
             }
-        }
-
-        //Событие для умерщвления формы при жмаканьи на хрестик
-        private void Form4_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
         }
 
         //Выпадающее меню Вавилон заполняет 2 текстовых поля под ним какой-то хернёй
@@ -186,6 +187,23 @@ namespace FilesRegister
             {
                 textBox1.Text = "Какой-то адрес";
                 textBox2.Text = "Ещё какая-то надпись";
+            }
+        }
+
+        //При выборе "ДА" открывает 3 контрола Кто? Где? Кого и сколько раз?
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox3.Text == "Да")
+            {
+                textBox10.Enabled = true;
+                dateTimePicker2.Enabled = true;
+                textBox11.Enabled = true;
+            }
+            else
+            {
+                textBox10.Enabled = false;
+                dateTimePicker2.Enabled = false;
+                textBox11.Enabled = false;
             }
         }
 
