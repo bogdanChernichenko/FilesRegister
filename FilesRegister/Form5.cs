@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FilesRegister
 {
     public partial class Form5 : Form
     {
+        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\Database1.mdf" + "; Integrated Security = True;";
         string _role,_documentId;
         public Form5()
         {
@@ -38,7 +34,6 @@ namespace FilesRegister
         //Заполнение полей данными из базы используя входящий ид записи
         private void DataFill(string documentId)
         {
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
             List<string> documentsData = new List<string>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -118,7 +113,6 @@ namespace FilesRegister
         //Редактирование записи
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
             string sqlExpression = "sp_EditDocumentsData";
 
             using (SqlConnection connection = new SqlConnection(connectionString))

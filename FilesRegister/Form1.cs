@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FilesRegister
 {
     public partial class Form1 : Form
     {
-        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
+        string currentFolder = Directory.GetCurrentDirectory();
+        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename ="  + Directory.GetCurrentDirectory() + "\\Database1.mdf" + "; Integrated Security = True;";
+
         public string role;
+
         public Form1()
         {
             InitializeComponent();

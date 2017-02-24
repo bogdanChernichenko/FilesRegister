@@ -283,6 +283,11 @@ namespace FilesRegister
             // 
             this.documentsTableAdapter.ClearBeforeFill = true;
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = this.database1DataSet3;
+            this.bindingSource1.Position = 0;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,8 +333,8 @@ namespace FilesRegister
         private System.Windows.Forms.DataGridViewTextBoxColumn датаОкончанияДоговораDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn документыDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn документВыданDataGridViewTextBoxColumn;
-        private DataGridViewEx dataGridView1;
-        private BindingSource bindingSource1;
+        public DataGridViewEx dataGridView1;
+        public BindingSource bindingSource1;
         private Button button3;
     }
 }

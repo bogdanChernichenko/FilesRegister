@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FilesRegister
@@ -17,6 +10,8 @@ namespace FilesRegister
             InitializeComponent();
         }
         public bool secretPassword = false;
+
+        //секретный пароль
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text != "11101991love")

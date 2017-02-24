@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FilesRegister
 {
     public partial class Form4 : Form
     {
+        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\Database1.mdf" + "; Integrated Security = True;";
         string _role;
         Form2 f2 = new Form2();
         
@@ -48,7 +50,6 @@ namespace FilesRegister
         {
            
             string sqlExpression = "sp_AddInfo";
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -161,7 +162,6 @@ namespace FilesRegister
                 List<string> documentBroughtList = new List<string>();
 
                 document = comboBox3.Text + " \n " + textBox10.Text + " \n " + dateTimePicker2.Text + " \n " + textBox11.Text;
-                //documentBroughtList2.AddRange(documentBroughtList);
                 SqlParameter documentsBroughtBy = new SqlParameter
                 {
                     ParameterName = "@ДокументВыдан",

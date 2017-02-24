@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text.RegularExpressions;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FilesRegister
@@ -10,7 +10,8 @@ namespace FilesRegister
     {
         Form1 f1 = new Form1();
         string _role;
-        
+        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\Database1.mdf" + "; Integrated Security = True;";
+
         //дефолтный конструктор
         public Form2()
         {
@@ -70,8 +71,7 @@ namespace FilesRegister
         //Событие для обновления базы при редактировании ячейки...это было круто
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
-            String s = "";
+                String s = "";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -104,8 +104,6 @@ namespace FilesRegister
         //метод для обновления базы
         private void UpdateGrid ()
         {
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -123,8 +121,12 @@ namespace FilesRegister
         //Открываем редактирование записи по двойному клику
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Form5 f5 = new Form5(_role, dataGridView1[1, e.RowIndex].FormattedValue.ToString());
-            f5.ShowDialog();
+            if (e.RowIndex != -1 && e.RowIndex != dataGridView1.RowCount-1)
+            {
+                Form5 f5 = new Form5(_role, dataGridView1[1, e.RowIndex].FormattedValue.ToString());
+                f5.ShowDialog();
+            }
+
         }
 
         //Обновить таблицу
@@ -138,9 +140,8 @@ namespace FilesRegister
         {
             if (e.Control && e.KeyCode == Keys.F)
             {
-
-                Form7 f7 = new Form7();
-                f7.ShowDialog();
+                Form7 f7 = new Form7();   
+                f7.ShowDialog(this);
             }
         }
 

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FilesRegister
 {
     public partial class Form3 : Form
     {
+        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\Database1.mdf" + "; Integrated Security = True;";
+
         public Form3()
         {
             InitializeComponent();
@@ -58,7 +61,7 @@ namespace FilesRegister
         //Добавление пользователя в базу
         private void AddUserSQL()
         {
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
+            //string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
             string sqlExpression = "sp_InsertUser";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -100,7 +103,6 @@ namespace FilesRegister
         private bool IsLoginUnique()
         {
             bool flag = true;
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
             string sqlExpression = "sp_getUsers";
             List<string> credentials = new List<string>();
 
