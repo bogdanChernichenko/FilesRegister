@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
 
@@ -8,8 +9,9 @@ namespace FilesRegister
 {
     public partial class Form3 : Form
     {
-        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\Database1.mdf" + "; Integrated Security = True;";
-
+        string connectionString = @"Data Source = (LocalDB)\v12; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\DataBaseV12.mdf " + "; Integrated Security = False;";
+        //string sqQLiteConnectionString = @"Server=" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
+        string sqQLiteConnectionString =  @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
         public Form3()
         {
             InitializeComponent();
@@ -54,6 +56,10 @@ namespace FilesRegister
                             AddUserSQL();
                         }
                     }
+                    else
+                    {
+                        AddUserSQL();
+                    }
                 }
              }
           }     //создание нового пользователя
@@ -61,17 +67,19 @@ namespace FilesRegister
         //Добавление пользователя в базу
         private void AddUserSQL()
         {
-            //string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\Database1.mdf""; Integrated Security = True;";
             string sqlExpression = "sp_InsertUser";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(sqQLiteConnectionString,true))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-
+                //SqlCommand command = new SqlCommand(sqlExpression, connection);
+                SQLiteCommand command = new SQLiteCommand(sqlExpression, connection);
+                //command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandText = "INSERT into Credentials (Id,Login, Password, Role) values("+ "'" + System.Guid.NewGuid().ToString().ToUpper() + "'"+ ",@Login, @Password, @Role)";
                 //добавляем логин
-                SqlParameter loginParam = new SqlParameter
+                //SqlParameter loginParam = new SqlParameter
+                SQLiteParameter loginParam = new SQLiteParameter
                 {
                     ParameterName = "@Login",
                     Value = textBox1.Text
@@ -79,7 +87,8 @@ namespace FilesRegister
                 command.Parameters.Add(loginParam);
 
                 //добавляем пароль
-                SqlParameter passwordParam = new SqlParameter
+                //SqlParameter passwordParam = new SqlParameter
+                SQLiteParameter passwordParam = new SQLiteParameter
                 {
                     ParameterName = "@Password",
                     Value = textBox2.Text
@@ -87,12 +96,14 @@ namespace FilesRegister
                 command.Parameters.Add(passwordParam);
 
                 //добавляем роль
-                SqlParameter roleParam = new SqlParameter
+                //SqlParameter roleParam = new SqlParameter
+                SQLiteParameter roleParam = new SQLiteParameter
                 {
                     ParameterName = "@Role",
                     Value = comboBox1.Text
                 };
                 command.Parameters.Add(roleParam);
+
 
                 var result = command.ExecuteNonQuery();
 
@@ -106,31 +117,43 @@ namespace FilesRegister
             string sqlExpression = "sp_getUsers";
             List<string> credentials = new List<string>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                var reader = command.ExecuteReader();
+                using (SQLiteConnection connection = new SQLiteConnection(sqQLiteConnectionString))
 
-                if (reader.HasRows)
                 {
-                    while (reader.Read())
-                    {
-                        credentials.Add(reader.GetString(1));
-                    }
-                }
-                reader.Close();
+                    connection.Open();
+                    //SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    SQLiteCommand command = new SQLiteCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    var reader = command.ExecuteReader();
 
-                for (int i = 0; i < credentials.Count; i++)
-                {
-                    if (credentials[i] == textBox1.Text)
+                    if (reader.HasRows)
                     {
-                        flag = false;
+                        while (reader.Read())
+                        {
+                            credentials.Add(reader.GetString(1));
+                        }
                     }
+                    reader.Close();
+
+                    for (int i = 0; i < credentials.Count; i++)
+                    {
+                        if (credentials[i] == textBox1.Text)
+                        {
+                            flag = false;
+                        }
+                    }
+
+                    return flag;
                 }
 
-                return flag;
+            }
+
+            catch
+            {
+                return true;
             }
         }
     }

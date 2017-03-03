@@ -14,7 +14,7 @@ namespace FilesRegister
         //секретный пароль
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "11101991love")
+            if (textBox1.Text != "love")
             {
                 MessageBox.Show("Секретный пароль не правильный!");
             }

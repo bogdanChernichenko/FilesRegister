@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
 
@@ -9,7 +10,9 @@ namespace FilesRegister
 {
     public partial class Form4 : Form
     {
-        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\Database1.mdf" + "; Integrated Security = True;";
+        string connectionString = @"Data Source = (LocalDB)\v12; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\DataBaseV12.mdf " + "; Integrated Security = False;";
+        string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
+
         string _role;
         Form2 f2 = new Form2();
         
@@ -48,17 +51,15 @@ namespace FilesRegister
         //метод добавления данных в базу
         private void AddInfoToDatabase()
         {
-           
-            string sqlExpression = "sp_AddInfo";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+           using (SQLiteConnection connection = new SQLiteConnection(sqQLiteConnectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                command.CommandType = CommandType.StoredProcedure;
+                SQLiteCommand command = new SQLiteCommand(connection);
+                command.CommandText = "INSERT into Documents (Id,Направление,Адрес,НаименованиеОбъекта,ЮрЛицоКорпорации,Контрагент,Помещение,Площадь,АренднаяСтавка,ДругиеПлатежи,ДатаОкончанияДоговора,Документы,ДокументВыдан,НомерДоговора) values(" +"'" + System.Guid.NewGuid().ToString().ToUpper() + "'" + ",Ltrim(Rtrim(@Направление)), Ltrim(Rtrim(@Адрес)), Ltrim(Rtrim(@НаименованиеОбъекта)), Ltrim(Rtrim(@ЮрЛицоКорпорации)), Ltrim(Rtrim(@Контрагент)), Ltrim(Rtrim(@Помещение)), Ltrim(Rtrim(@Площадь)), Ltrim(Rtrim(@АренднаяСтавка)), Ltrim(Rtrim(@ДругиеПлатежи)), Ltrim(Rtrim(@ДатаОкончанияДоговора)), Ltrim(Rtrim(@Документы)), Ltrim(Rtrim(@ДокументВыдан)), Ltrim(Rtrim(@НомерДоговора)))";
 
                 //Направление
-                SqlParameter napravlenie = new SqlParameter
+
+                SQLiteParameter napravlenie = new SQLiteParameter
                 {
                     ParameterName = "@Направление",
                    Value = comboBox4.Text
@@ -66,7 +67,7 @@ namespace FilesRegister
                 command.Parameters.Add(napravlenie);
 
                 //Адрес
-                SqlParameter address = new SqlParameter
+                SQLiteParameter address = new SQLiteParameter
                 {
                     ParameterName = "@Адрес",
                     Value = textBox1.Text
@@ -74,7 +75,7 @@ namespace FilesRegister
                 command.Parameters.Add(address);
 
                 //Наименование объекта
-                SqlParameter objectName = new SqlParameter
+                SQLiteParameter objectName = new SQLiteParameter
                 {
                     ParameterName = "@НаименованиеОбъекта",
                     Value = textBox2.Text
@@ -82,7 +83,7 @@ namespace FilesRegister
                 command.Parameters.Add(objectName);
 
                 //Юр.лицо корпорации
-                SqlParameter lawFace = new SqlParameter
+                SQLiteParameter lawFace = new SQLiteParameter
                 {
                     ParameterName = "@ЮрЛицоКорпорации",
                     Value = textBox3.Text
@@ -90,14 +91,15 @@ namespace FilesRegister
                 command.Parameters.Add(lawFace);
 
                 //Контрагент
-                SqlParameter contrAgent = new SqlParameter
+                SQLiteParameter contrAgent = new SQLiteParameter
                 {
                     ParameterName = "@Контрагент",
                     Value = textBox4.Text
                 };
                 command.Parameters.Add(contrAgent);
 
-                SqlParameter dogovorNum = new SqlParameter
+                //SqlParameter dogovorNum = new SqlParameter
+                SQLiteParameter dogovorNum = new SQLiteParameter
                 {
                     ParameterName = "@НомерДоговора",
                     Value = textBox9.Text
@@ -105,7 +107,7 @@ namespace FilesRegister
                 command.Parameters.Add(dogovorNum);
 
                 //Помещение
-                SqlParameter builing = new SqlParameter
+                SQLiteParameter builing = new SQLiteParameter
                 {
                     ParameterName = "@Помещение",
                     Value = textBox5.Text
@@ -113,15 +115,15 @@ namespace FilesRegister
                 command.Parameters.Add(builing);
 
                 //Площадь
-                SqlParameter size = new SqlParameter
-                {
+                SQLiteParameter size = new SQLiteParameter
+                 {
                     ParameterName = "@Площадь",
                     Value = textBox6.Text
                 };
                 command.Parameters.Add(size);
 
                 //Арендная ставка
-                SqlParameter rentMoney = new SqlParameter
+                SQLiteParameter rentMoney = new SQLiteParameter
                 {
                     ParameterName = "@АренднаяСтавка",
                     Value = textBox7.Text
@@ -129,7 +131,7 @@ namespace FilesRegister
                 command.Parameters.Add(rentMoney);
 
                 //Другие платежи
-                SqlParameter otherPayments = new SqlParameter
+                SQLiteParameter otherPayments = new SQLiteParameter
                 {
                     ParameterName = "@ДругиеПлатежи",
                     Value = textBox8.Text
@@ -140,7 +142,7 @@ namespace FilesRegister
 
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.CustomFormat = "yyyyMMdd";
-                SqlParameter endDate = new SqlParameter
+                SQLiteParameter endDate = new SQLiteParameter
                 {
                     ParameterName = "@ДатаОкончанияДоговора",
                     Value = dateTimePicker1.Text
@@ -148,7 +150,7 @@ namespace FilesRegister
                 command.Parameters.Add(endDate);
 
                 //Документы
-                SqlParameter documents = new SqlParameter
+                SQLiteParameter documents = new SQLiteParameter
                 {
                     ParameterName = "@Документы",
                     Value = comboBox2.Text
@@ -162,7 +164,7 @@ namespace FilesRegister
                 List<string> documentBroughtList = new List<string>();
 
                 document = comboBox3.Text + " \n " + textBox10.Text + " \n " + dateTimePicker2.Text + " \n " + textBox11.Text;
-                SqlParameter documentsBroughtBy = new SqlParameter
+                SQLiteParameter documentsBroughtBy = new SQLiteParameter
                 {
                     ParameterName = "@ДокументВыдан",
                     Value = document
@@ -207,5 +209,23 @@ namespace FilesRegister
             }
         }
 
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "ТЦ")
+            {
+            comboBox2.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",});
+            }
+            else
+            {
+                comboBox2.Items.Clear();
+            }
+        }
     }
 }

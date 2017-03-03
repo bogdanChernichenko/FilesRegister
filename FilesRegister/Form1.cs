@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
 
@@ -9,7 +10,7 @@ namespace FilesRegister
     public partial class Form1 : Form
     {
         string currentFolder = Directory.GetCurrentDirectory();
-        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename ="  + Directory.GetCurrentDirectory() + "\\Database1.mdf" + "; Integrated Security = True;";
+        string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
 
         public string role;
 
@@ -25,20 +26,19 @@ namespace FilesRegister
 
         //Вход
         private void button1_Click(object sender, EventArgs e)
-        {
+        { 
             string sLogin = LoginBox.Text;
             string sPassword = PassBox.Text;
-            
             string sqlExpression = "sp_getUsers";
             List<string> credentials = new List<string>();
             bool flag = false;
 
             //Начинаем строить невменяемые условия при авторизации
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(sqQLiteConnectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SQLiteCommand command = new SQLiteCommand(sqlExpression, connection);
+                command.CommandText = "SELECT * from Credentials";
                 var reader = command.ExecuteReader();
 
                 if (reader.HasRows)

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.database1DataSet1 = new FilesRegister.Database1DataSet1();
             this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -53,7 +52,6 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.documentsTableAdapter = new FilesRegister.Database1DataSet1TableAdapters.DocumentsTableAdapter();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -63,6 +61,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -70,7 +69,6 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -86,16 +84,6 @@
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Направление";
-            // 
-            // database1DataSet1
-            // 
-            this.database1DataSet1.DataSetName = "Database1DataSet1";
-            this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // documentsBindingSource
-            // 
-            this.documentsBindingSource.DataMember = "Documents";
-            this.documentsBindingSource.DataSource = this.database1DataSet1;
             // 
             // label2
             // 
@@ -275,10 +263,6 @@
             this.comboBox3.TabIndex = 13;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
-            // documentsTableAdapter
-            // 
-            this.documentsTableAdapter.ClearBeforeFill = true;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(148, 55);
@@ -288,7 +272,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(723, 3);
+            this.button3.Location = new System.Drawing.Point(718, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 9;
@@ -298,9 +282,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(643, 3);
+            this.button1.Location = new System.Drawing.Point(639, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 23);
+            this.button1.Size = new System.Drawing.Size(73, 23);
             this.button1.TabIndex = 7;
             this.button1.Text = "К таблице";
             this.button1.UseVisualStyleBackColor = true;
@@ -312,7 +296,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.83048F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.16951F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -361,9 +345,10 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.AutoSize = true;
-            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.textBox3, 1, 0);
@@ -374,6 +359,7 @@
             this.tableLayoutPanel3.Controls.Add(this.textBox5, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.label11, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.textBox9, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.comboBox1, 2, 2);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 101);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 5;
@@ -382,7 +368,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(319, 176);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(341, 176);
             this.tableLayoutPanel3.TabIndex = 13;
             // 
             // label11
@@ -400,6 +386,20 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(156, 20);
             this.textBox9.TabIndex = 6;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "ТЦ",
+            "ОФ",
+            "  "});
+            this.comboBox1.Location = new System.Drawing.Point(283, 63);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(55, 21);
+            this.comboBox1.TabIndex = 9;
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // tableLayoutPanel4
             // 
@@ -424,7 +424,7 @@
             this.tableLayoutPanel4.Controls.Add(this.textBox10, 0, 6);
             this.tableLayoutPanel4.Controls.Add(this.dateTimePicker2, 1, 6);
             this.tableLayoutPanel4.Controls.Add(this.textBox11, 2, 6);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(331, 98);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(350, 98);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 7;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -501,9 +501,8 @@
             this.MinimumSize = new System.Drawing.Size(829, 446);
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form4";
+            this.Text = "Новая запись";
             this.Load += new System.EventHandler(this.Form4_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -541,9 +540,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox comboBox3;
-        private Database1DataSet1 database1DataSet1;
         private System.Windows.Forms.BindingSource documentsBindingSource;
-        private Database1DataSet1TableAdapters.DocumentsTableAdapter documentsTableAdapter;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
@@ -560,5 +557,6 @@
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

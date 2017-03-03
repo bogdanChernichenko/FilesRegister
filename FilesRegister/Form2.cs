@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
 
@@ -10,7 +12,7 @@ namespace FilesRegister
     {
         Form1 f1 = new Form1();
         string _role;
-        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\Database1.mdf" + "; Integrated Security = True;";
+        string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
 
         //дефолтный конструктор
         public Form2()
@@ -33,8 +35,7 @@ namespace FilesRegister
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "database1DataSet3.Documents". При необходимости она может быть перемещена или удалена.
-            this.documentsTableAdapter.Fill(this.database1DataSet3.Documents);
+           
         }
 
         //вернуться на авторизацию
@@ -68,53 +69,23 @@ namespace FilesRegister
             
         }
 
-        //Событие для обновления базы при редактировании ячейки...это было круто
-        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void UpdateGrid()
         {
-                String s = "";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+            DataSet ds = new DataSet();
+            string sql = "SELECT * FROM Documents";
+            try
             {
-                connection.Open();
-
-                //эвейдим баг с форматом даты при корректировке даты
-                if (dataGridView1.Columns[e.ColumnIndex].HeaderText.ToString() == "ДатаОкончанияДоговора")
+                using (SQLiteConnection conn = new SQLiteConnection(sqQLiteConnectionString))
                 {
-                    s = dataGridView1[e.ColumnIndex, e.RowIndex].FormattedValue.ToString();
-                    string sDays = s.Substring(0,2);
-                    string sMonth = s.Substring(3,2);
-                    string sYear = s.Substring(6,4);
-                    s = sYear +"."+ sMonth +"." + sDays;
-
-                    SqlDataAdapter da = new SqlDataAdapter("UPDATE Documents set " + dataGridView1.Columns[e.ColumnIndex].HeaderText + " =" + "N'" + s + "'" + "WHERE ID =" + "'" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", connection);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    da.Update(dt);
-                }
-                else
-                {
-                    SqlDataAdapter da = new SqlDataAdapter("UPDATE Documents set " + dataGridView1.Columns[e.ColumnIndex].HeaderText + " =" + "N'" + dataGridView1[e.ColumnIndex, e.RowIndex].FormattedValue + "'" + "WHERE ID =" + "'" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", connection);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    da.Update(dt);
+                    using (SQLiteDataAdapter da = new SQLiteDataAdapter(sql, conn))
+                    {
+                        da.Fill(ds);
+                        dataGridView1.DataSource = ds.Tables[0].DefaultView;
+                    }
                 }
             }
-        }
-
-        //метод для обновления базы
-        private void UpdateGrid ()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            catch (Exception)
             {
-                connection.Open();
-
-                SqlDataAdapter da = new SqlDataAdapter("Select * from Documents", connection);
-                SqlCommandBuilder cb = new SqlCommandBuilder(da);
-
-                DataSet ds = new DataSet();
-                da.Fill(ds, "Documents");
-
-                dataGridView1.DataSource = ds.Tables[0];
             }
         }
 
