@@ -99,16 +99,18 @@ namespace FilesRegister
                 command.Parameters.Add(contrAgent);
 
                 //SqlParameter dogovorNum = new SqlParameter
+                string dogovorNumber;
+                dogovorNumber = textBox9.Text + "," + comboBox1.Text;
                 SQLiteParameter dogovorNum = new SQLiteParameter
                 {
                     ParameterName = "@НомерДоговора",
-                    Value = textBox9.Text
+                    Value = dogovorNumber
                 };
                 command.Parameters.Add(dogovorNum);
 
                 //Помещение
                 string pomeshenie = "";
-                pomeshenie = textBox5.Text + " \n" + comboBox5.Text + " \n" + comboBox6.Text + " \n" + textBox12.Text;
+                pomeshenie = textBox5.Text + "\n" + comboBox5.Text + "\n" + comboBox6.Text + "\n" + textBox12.Text;
                 SQLiteParameter builing = new SQLiteParameter
                 {
                     ParameterName = "@Помещение",
@@ -175,7 +177,7 @@ namespace FilesRegister
                 }
                 else
                 {
-                   document = comboBox3.Text + " \n " + textBox10.Text + " \n " + dateTimePicker2.Text + " \n " + textBox11.Text;
+                   document = comboBox3.Text + "\n" + textBox10.Text + "\n" + dateTimePicker2.Text + "\n" + textBox11.Text;
                     SQLiteParameter documentsBroughtBy = new SQLiteParameter
                     {
                         ParameterName = "@ДокументВыдан",
@@ -183,8 +185,6 @@ namespace FilesRegister
                     };
                     command.Parameters.Add(documentsBroughtBy);
                 }
-
-               
                 command.ExecuteNonQuery();
 
                 MessageBox.Show("Запись добавлена успешно!");
@@ -242,11 +242,11 @@ namespace FilesRegister
         {
             if (comboBox1.Text == "ТЦ" && comboBox4.Text == "Вавилон")
             {
-                textBox13.Text = "1" + Environment.NewLine + "2" + Environment.NewLine + "3" + Environment.NewLine + "4" + Environment.NewLine + "5" + Environment.NewLine + "6" + Environment.NewLine + "7" + Environment.NewLine;
+                textBox13.Text = "здесь" + Environment.NewLine + "7" + Environment.NewLine + "документов" + Environment.NewLine + "верь" + Environment.NewLine + "мне" + Environment.NewLine + "я" + Environment.NewLine + "дельфин" + Environment.NewLine;
             }
             else if (comboBox1.Text == "ОФ" && comboBox4.Text == "Вавилон")
             {
-                textBox13.Text = "1" + Environment.NewLine + "2" + Environment.NewLine + "3" + Environment.NewLine + "4" + Environment.NewLine + "5" + Environment.NewLine;
+                textBox13.Text = "Здесь" + Environment.NewLine + "ориентировочно" + Environment.NewLine + "около" + Environment.NewLine + "пяти" + Environment.NewLine + "записей" + Environment.NewLine;
             }
             else if (comboBox1.Text == "КН-ГП")
             {

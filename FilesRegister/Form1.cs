@@ -17,6 +17,7 @@ namespace FilesRegister
         public Form1()
         {
             InitializeComponent();
+            LoginBox.Select();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -82,7 +83,16 @@ namespace FilesRegister
             Form f3 = new Form3();
             f3.Show();
             this.Hide();
-        }   
+        }
 
+        //нажимаем войти по нажатию Enter
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(null,new EventArgs());
+            }
+        }
     }
 }

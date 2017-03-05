@@ -10,7 +10,6 @@ namespace FilesRegister
     public partial class Form3 : Form
     {
         string connectionString = @"Data Source = (LocalDB)\v12; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\DataBaseV12.mdf " + "; Integrated Security = False;";
-        //string sqQLiteConnectionString = @"Server=" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
         string sqQLiteConnectionString =  @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
         public Form3()
         {
@@ -69,16 +68,13 @@ namespace FilesRegister
         {
             string sqlExpression = "sp_InsertUser";
 
-            //using (SqlConnection connection = new SqlConnection(connectionString))
             using (SQLiteConnection connection = new SQLiteConnection(sqQLiteConnectionString,true))
             {
                 connection.Open();
-                //SqlCommand command = new SqlCommand(sqlExpression, connection);
                 SQLiteCommand command = new SQLiteCommand(sqlExpression, connection);
-                //command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.CommandText = "INSERT into Credentials (Id,Login, Password, Role) values("+ "'" + System.Guid.NewGuid().ToString().ToUpper() + "'"+ ",@Login, @Password, @Role)";
+                
                 //добавляем логин
-                //SqlParameter loginParam = new SqlParameter
                 SQLiteParameter loginParam = new SQLiteParameter
                 {
                     ParameterName = "@Login",
@@ -87,7 +83,6 @@ namespace FilesRegister
                 command.Parameters.Add(loginParam);
 
                 //добавляем пароль
-                //SqlParameter passwordParam = new SqlParameter
                 SQLiteParameter passwordParam = new SQLiteParameter
                 {
                     ParameterName = "@Password",
@@ -96,7 +91,6 @@ namespace FilesRegister
                 command.Parameters.Add(passwordParam);
 
                 //добавляем роль
-                //SqlParameter roleParam = new SqlParameter
                 SQLiteParameter roleParam = new SQLiteParameter
                 {
                     ParameterName = "@Role",
@@ -117,14 +111,12 @@ namespace FilesRegister
             string sqlExpression = "sp_getUsers";
             List<string> credentials = new List<string>();
 
-            //using (SqlConnection connection = new SqlConnection(connectionString))
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(sqQLiteConnectionString))
 
                 {
                     connection.Open();
-                    //SqlCommand command = new SqlCommand(sqlExpression, connection);
                     SQLiteCommand command = new SQLiteCommand(sqlExpression, connection);
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     var reader = command.ExecuteReader();
@@ -155,6 +147,11 @@ namespace FilesRegister
             {
                 return true;
             }
+        }
+
+        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

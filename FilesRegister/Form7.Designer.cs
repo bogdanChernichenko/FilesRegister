@@ -67,6 +67,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(508, 173);
+            this.MinimumSize = new System.Drawing.Size(508, 173);
             this.Name = "Form7";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Фильтр";

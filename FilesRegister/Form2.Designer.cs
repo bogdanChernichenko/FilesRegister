@@ -39,41 +39,22 @@ namespace FilesRegister
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new FilesRegister.Form2.DataGridViewEx();
             this.Counter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataBaseV12DataSet = new FilesRegister.DataBaseV12DataSet();
+            this.documentsTableAdapter = new FilesRegister.DataBaseV12DataSetTableAdapters.DocumentsTableAdapter();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
-            this.documentsTableAdapter = new FilesRegister.DataBaseV12DataSetTableAdapters.DocumentsTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBaseV12DataSet)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(222, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(217, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "К авторизации";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(213, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Новая запись";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridView1
             // 
@@ -87,6 +68,14 @@ namespace FilesRegister
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Counter,
             this.Column1});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -123,12 +112,17 @@ namespace FilesRegister
             this.dataBaseV12DataSet.DataSetName = "DataBaseV12DataSet";
             this.dataBaseV12DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // documentsTableAdapter
+            // 
+            this.documentsTableAdapter.ClearBeforeFill = true;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 309);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1003, 35);
@@ -136,17 +130,36 @@ namespace FilesRegister
             // 
             // button3
             // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button3.Location = new System.Drawing.Point(445, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 23);
+            this.button3.Size = new System.Drawing.Size(156, 23);
             this.button3.TabIndex = 3;
             this.button3.Text = "Обновить таблицу";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // documentsTableAdapter
+            // button1
             // 
-            this.documentsTableAdapter.ClearBeforeFill = true;
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.Location = new System.Drawing.Point(222, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(217, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "К авторизации";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.Location = new System.Drawing.Point(3, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(213, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Новая запись";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form2
             // 
@@ -170,16 +183,15 @@ namespace FilesRegister
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public DataGridViewEx dataGridView1;
-        private Button button3;
         private DataBaseV12DataSet dataBaseV12DataSet;
         private BindingSource documentsBindingSource;
         private DataBaseV12DataSetTableAdapters.DocumentsTableAdapter documentsTableAdapter;
         private DataGridViewTextBoxColumn Counter;
         private DataGridViewTextBoxColumn Column1;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button button2;
+        private Button button1;
+        private Button button3;
     }
 }

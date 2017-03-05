@@ -82,13 +82,36 @@ namespace FilesRegister
                 textBox2.Text = documentsData[2];       //наименование
                 textBox3.Text = documentsData[3];       //ЮрЛицо
                 textBox4.Text = documentsData[4];       //Контрагент
-                textBox5.Text = documentsData[5];       //номерДоговора
 
+                string[] dogovorNum = documentsData[5].Split(',');  //номерДоговора
+                if (dogovorNum.Length == 1)
+                {
+                    textBox5.Text = dogovorNum[0];
+                }
+                else
+                {
+                    textBox5.Text = dogovorNum[0];
+                    comboBox4.SelectedItem = dogovorNum[1];
+                }
+                    
                 string[] pomeshenie = documentsData[6].Split('\n'); //помещение
-                textBox6.Text = pomeshenie[0];
-                comboBox5.SelectedItem = pomeshenie[1].Trim();
-                comboBox6.SelectedItem = pomeshenie[2].Trim();
-                textBox12.Text = pomeshenie[3];
+                if (pomeshenie.Length == 1)
+                {
+                    textBox6.Text = pomeshenie[0];
+                }
+                else if (pomeshenie.Length == 3)
+                {
+                    comboBox6.SelectedItem = pomeshenie[2].Trim();
+                    textBox12.Text = pomeshenie[3];
+                }
+                else
+                {
+                    textBox6.Text = pomeshenie[0];
+                    comboBox5.SelectedItem = pomeshenie[1].Trim();
+                    comboBox6.SelectedItem = pomeshenie[2].Trim();
+                    textBox12.Text = pomeshenie[3];
+                }
+
 
                 textBox7.Text = documentsData[7];       //площадь
                 textBox8.Text = documentsData[8];       //арендная ставка
@@ -177,6 +200,23 @@ namespace FilesRegister
             }
         }
 
+        //Документ Да - энейблим поля 
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox3.Text == "Да")
+            {
+                textBox10.Enabled = true;
+                dateTimePicker2.Enabled = true;
+                textBox11.Enabled = true;
+            }
+            else
+            {
+                textBox10.Enabled = false;
+                dateTimePicker2.Enabled = false;
+                textBox11.Enabled = false;
+            }
+        }
+
         //Редактирование записи
         private void button1_Click(object sender, EventArgs e)
         {
@@ -192,8 +232,14 @@ namespace FilesRegister
                 command.Parameters.Add(new SQLiteParameter("@НаименованиеОбъекта", textBox2.Text));
                 command.Parameters.Add(new SQLiteParameter("@ЮрЛицоКорпорации", textBox3.Text));
                 command.Parameters.Add(new SQLiteParameter("@Контрагент", textBox4.Text));
-                command.Parameters.Add(new SQLiteParameter("@НомерДоговора", textBox5.Text));
-                command.Parameters.Add(new SQLiteParameter("@Помещение", textBox6.Text));
+
+                string dogovor;
+                dogovor = textBox5.Text + "," + comboBox4.Text;
+                command.Parameters.Add(new SQLiteParameter("@НомерДоговора", dogovor));
+
+                string pomeshenie;
+                pomeshenie = textBox6.Text + "\n" + comboBox5.Text + "\n" + comboBox6.Text + "\n" + textBox12.Text;
+                command.Parameters.Add(new SQLiteParameter("@Помещение", pomeshenie));
                 command.Parameters.Add(new SQLiteParameter("@Площадь", textBox7.Text));
                 command.Parameters.Add(new SQLiteParameter("@АренднаяСтавка", textBox8.Text));
                 command.Parameters.Add(new SQLiteParameter("@ДругиеПлатежи", textBox9.Text));
@@ -203,16 +249,20 @@ namespace FilesRegister
                 command.Parameters.Add(new SQLiteParameter("@ДатаОкончанияДоговора", dateTimePicker1.Text));
                 command.Parameters.Add(new SQLiteParameter("@Документы", textBox13.Text));
 
-                dateTimePicker2.Format = DateTimePickerFormat.Custom;
-                dateTimePicker2.CustomFormat = "yyyy.MM.dd";
-                string document;
-                document = comboBox3.Text + " \n " + textBox10.Text + " \n " + dateTimePicker2.Text + " \n " + textBox11.Text;
-                command.Parameters.Add(new SQLiteParameter("@ДокументВыдан", document));
-
+                if (comboBox3.Text == "Нет")
+                {
+                    command.Parameters.Add(new SQLiteParameter("@ДокументВыдан", comboBox3.Text));
+                }
+                else
+                {
+                    string document;
+                    dateTimePicker2.Format = DateTimePickerFormat.Custom;
+                    dateTimePicker2.CustomFormat = "yyyy.MM.dd";
+                    document = comboBox3.Text + "\n" + textBox10.Text + "\n" + dateTimePicker2.Text + "\n" + textBox11.Text;
+                    command.Parameters.Add(new SQLiteParameter("@ДокументВыдан", document));
+                }
                 command.Parameters.Add(new SQLiteParameter("@Id", _documentId.ToUpper()));
                 command.ExecuteNonQuery();
-
-                
 
                 MessageBox.Show("Запись обновлена успешно!");
 

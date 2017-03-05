@@ -69,6 +69,7 @@ namespace FilesRegister
             
         }
 
+        //Заполнение таблицы данными из базы
         private void UpdateGrid()
         {
             DataSet ds = new DataSet();
@@ -114,7 +115,7 @@ namespace FilesRegister
                 }
                 else
                 {
-                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.Red;
+                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.DarkRed;
                 }
 
             }
