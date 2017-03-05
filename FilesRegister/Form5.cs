@@ -30,6 +30,19 @@ namespace FilesRegister
             {
                 BlockElements();
                 button1.Visible = false;
+                button2.Visible = false;
+            }
+
+            if (comboBox1.Text == "КН-ГП")
+            {
+                comboBox5.Visible = false;
+                label17.Visible = false;
+            }
+            else if (comboBox1.Text == "Коммерческая недвижимость")
+            {
+                comboBox5.Visible = false;
+                comboBox4.Visible = false;
+                label17.Visible = false;
             }
         }
 
@@ -65,27 +78,39 @@ namespace FilesRegister
                 }
                 reader.Close();
 
-                textBox1.Text = documentsData[1];
-                textBox2.Text = documentsData[2];
-                textBox3.Text = documentsData[3];
-                textBox4.Text = documentsData[4];
-                textBox5.Text = documentsData[5];
-                textBox6.Text = documentsData[6];
-                textBox7.Text = documentsData[7];
-                textBox8.Text = documentsData[8];
-                textBox9.Text = documentsData[9];
-                textBox10.Text = documentsData[10];
+                textBox1.Text = documentsData[1];       //Адрес
+                textBox2.Text = documentsData[2];       //наименование
+                textBox3.Text = documentsData[3];       //ЮрЛицо
+                textBox4.Text = documentsData[4];       //Контрагент
+                textBox5.Text = documentsData[5];       //номерДоговора
 
-                comboBox1.Text = documentsData[0].Trim();
-                comboBox2.Text = documentsData[11].Trim();
+                string[] pomeshenie = documentsData[6].Split('\n'); //помещение
+                textBox6.Text = pomeshenie[0];
+                comboBox5.SelectedItem = pomeshenie[1].Trim();
+                comboBox6.SelectedItem = pomeshenie[2].Trim();
+                textBox12.Text = pomeshenie[3];
+
+                textBox7.Text = documentsData[7];       //площадь
+                textBox8.Text = documentsData[8];       //арендная ставка
+                textBox9.Text = documentsData[9];       //другие платежи
+
+                comboBox1.Text = documentsData[0].Trim();   //документы
+                textBox13.Text = documentsData[11].Trim();
 
                 dateTimePicker1.Text = documentsData[10];
 
                 string[] documentsBy = documentsData[12].Split('\n');
-                comboBox3.Text = documentsBy[0].Trim();
-                textBox10.Text = documentsBy[1].Trim();
-                dateTimePicker2.Text = documentsBy[2].Trim();
-                textBox11.Text = documentsBy[3].Trim();
+                if (documentsBy.Length == 1)
+                {
+                    comboBox3.SelectedItem = documentsBy[0].Trim();
+                }
+                else
+                {
+                    comboBox3.SelectedItem = documentsBy[0].Trim();
+                    textBox10.Text = documentsBy[1].Trim();
+                    dateTimePicker2.Text = documentsBy[2].Trim();
+                    textBox11.Text = documentsBy[3].Trim();
+                }
             }
 
         }
@@ -106,11 +131,50 @@ namespace FilesRegister
             textBox11.ReadOnly = true;
 
             comboBox1.Enabled = false;
-            comboBox2.Enabled = false;
+            textBox13.Enabled = false;
             comboBox3.Enabled = false;
 
             dateTimePicker1.Enabled = false;
             dateTimePicker2.Enabled = false;
+        }
+
+        //Удаление записи
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(sqQLiteConnectionString))
+            {
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand(connection);
+                command.CommandText = "DELETE FROM Documents WHERE ID =" + "'" + _documentId.ToString().ToUpper() + "'";
+                if (MessageBox.Show("Вы действительно хотите удалить запись?","Предупреждение",MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    MessageBox.Show("Запись удалена успешно!");
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        //выпиливаем башню и прочую хуйню 
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "КН-ГП")
+            {
+                comboBox5.Visible = false;
+                label17.Visible = false;
+                comboBox4.Visible = true;
+            }
+            else if (comboBox1.Text == "Коммерческая недвижимость")
+            {
+                comboBox5.Visible = false;
+                comboBox4.Visible = false;
+                label17.Visible = false;
+            }
+            else
+            {
+                label17.Visible = true;
+                comboBox5.Visible = true;
+                comboBox4.Visible = true;
+            }
         }
 
         //Редактирование записи
@@ -137,7 +201,7 @@ namespace FilesRegister
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.CustomFormat = "yyyyMMdd";
                 command.Parameters.Add(new SQLiteParameter("@ДатаОкончанияДоговора", dateTimePicker1.Text));
-                command.Parameters.Add(new SQLiteParameter("@Документы", comboBox2.Text));
+                command.Parameters.Add(new SQLiteParameter("@Документы", textBox13.Text));
 
                 dateTimePicker2.Format = DateTimePickerFormat.Custom;
                 dateTimePicker2.CustomFormat = "yyyy.MM.dd";

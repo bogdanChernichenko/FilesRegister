@@ -104,6 +104,20 @@ namespace FilesRegister
         private void button3_Click(object sender, EventArgs e)
         {
             UpdateGrid();
+            string s = "";
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                s = dataGridView1.Rows[i].Cells[14].Value.ToString();
+                if (s.Contains("Да"))
+                {
+                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.Red;
+                }
+
+            }
         }
 
         //Хоткей для фильтра

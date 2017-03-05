@@ -107,10 +107,12 @@ namespace FilesRegister
                 command.Parameters.Add(dogovorNum);
 
                 //Помещение
+                string pomeshenie = "";
+                pomeshenie = textBox5.Text + " \n" + comboBox5.Text + " \n" + comboBox6.Text + " \n" + textBox12.Text;
                 SQLiteParameter builing = new SQLiteParameter
                 {
                     ParameterName = "@Помещение",
-                    Value = textBox5.Text
+                    Value = pomeshenie
                 };
                 command.Parameters.Add(builing);
 
@@ -153,7 +155,7 @@ namespace FilesRegister
                 SQLiteParameter documents = new SQLiteParameter
                 {
                     ParameterName = "@Документы",
-                    Value = comboBox2.Text
+                    Value = textBox13.Text
                 };
                 command.Parameters.Add(documents);
 
@@ -161,15 +163,27 @@ namespace FilesRegister
                 dateTimePicker2.Format = DateTimePickerFormat.Custom;
                 dateTimePicker2.CustomFormat = "yyyy.MM.dd";
                 string document;
-                List<string> documentBroughtList = new List<string>();
 
-                document = comboBox3.Text + " \n " + textBox10.Text + " \n " + dateTimePicker2.Text + " \n " + textBox11.Text;
-                SQLiteParameter documentsBroughtBy = new SQLiteParameter
+                if (comboBox3.Text == "Нет")
                 {
-                    ParameterName = "@ДокументВыдан",
-                    Value = document
-                };
-                command.Parameters.Add(documentsBroughtBy);
+                    SQLiteParameter documentsBroughtBy = new SQLiteParameter
+                    {
+                        ParameterName = "@ДокументВыдан",
+                        Value = comboBox3.Text
+                    };
+                    command.Parameters.Add(documentsBroughtBy);
+                }
+                else
+                {
+                   document = comboBox3.Text + " \n " + textBox10.Text + " \n " + dateTimePicker2.Text + " \n " + textBox11.Text;
+                    SQLiteParameter documentsBroughtBy = new SQLiteParameter
+                    {
+                        ParameterName = "@ДокументВыдан",
+                        Value = document
+                    };
+                    command.Parameters.Add(documentsBroughtBy);
+                }
+
                
                 command.ExecuteNonQuery();
 
@@ -184,11 +198,25 @@ namespace FilesRegister
             {
                 textBox1.Text = "Маршала Малиновского ул., 2, г. Днепр";
                 textBox2.Text = "Вавилон-1, МФЦ";
+                comboBox1.Visible = true;
+                label17.Visible = true;
+                comboBox5.Visible = true;
+            }
+            else if (comboBox4.Text == "КН-ГП")
+            {
+                textBox1.Text = "Святослава Храброго ул., 35/пер. Ушинского 1, г.Днепр";
+                textBox2.Text = "ДомЪ и ИнтерьерЪ,ТЦ";
+                comboBox1.Visible = true;
+                label17.Visible = false;
+                comboBox5.Visible = false;
             }
             else
             {
-                textBox1.Text = "Какой-то адрес";
-                textBox2.Text = "Ещё какая-то надпись";
+                textBox1.Text = "";
+                textBox2.Text = "";
+                comboBox1.Visible = false;
+                label17.Visible = false;
+                comboBox5.Visible = false;
             }
         }
 
@@ -209,22 +237,24 @@ namespace FilesRegister
             }
         }
 
+        //Заполнение документов при изменении ТЦ КП и прочей хуйни
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBox1.Text == "ТЦ")
+            if (comboBox1.Text == "ТЦ" && comboBox4.Text == "Вавилон")
             {
-            comboBox2.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",});
+                textBox13.Text = "1" + Environment.NewLine + "2" + Environment.NewLine + "3" + Environment.NewLine + "4" + Environment.NewLine + "5" + Environment.NewLine + "6" + Environment.NewLine + "7" + Environment.NewLine;
+            }
+            else if (comboBox1.Text == "ОФ" && comboBox4.Text == "Вавилон")
+            {
+                textBox13.Text = "1" + Environment.NewLine + "2" + Environment.NewLine + "3" + Environment.NewLine + "4" + Environment.NewLine + "5" + Environment.NewLine;
+            }
+            else if (comboBox1.Text == "КН-ГП")
+            {
+                comboBox5.Visible = false;
             }
             else
             {
-                comboBox2.Items.Clear();
+                textBox13.Text = "";
             }
         }
     }
