@@ -217,7 +217,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(994, 3);
+            this.button3.Location = new System.Drawing.Point(993, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(216, 44);
             this.button3.TabIndex = 9;
@@ -229,7 +229,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(796, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 44);
+            this.button1.Size = new System.Drawing.Size(191, 44);
             this.button1.TabIndex = 7;
             this.button1.Text = "Вернуться к таблице";
             this.button1.UseVisualStyleBackColor = true;
@@ -241,7 +241,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.04032F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.95968F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 223F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -432,7 +432,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 51);
+            this.label5.Location = new System.Drawing.Point(3, 55);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 4;
@@ -448,7 +448,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(156, 41);
+            this.textBox4.Location = new System.Drawing.Point(156, 44);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(240, 35);
@@ -458,7 +458,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 135);
+            this.label6.Location = new System.Drawing.Point(3, 137);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 13);
             this.label6.TabIndex = 4;
@@ -466,7 +466,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(156, 123);
+            this.textBox5.Location = new System.Drawing.Point(156, 126);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(240, 35);
@@ -476,7 +476,7 @@
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 92);
+            this.label11.Location = new System.Drawing.Point(3, 96);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(94, 13);
             this.label11.TabIndex = 8;
@@ -484,7 +484,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(156, 80);
+            this.textBox9.Location = new System.Drawing.Point(156, 85);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(240, 35);
@@ -499,10 +499,11 @@
             "ОФ",
             "СК",
             "      "});
-            this.comboBox1.Location = new System.Drawing.Point(402, 80);
+            this.comboBox1.Location = new System.Drawing.Point(402, 85);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(120, 21);
             this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged_1);
             // 
             // textBox6
             // 
@@ -571,7 +572,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 12);
+            this.label4.Location = new System.Drawing.Point(3, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 13);
             this.label4.TabIndex = 4;

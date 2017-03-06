@@ -238,15 +238,15 @@ namespace FilesRegister
         }
 
         //Заполнение документов при изменении ТЦ КП и прочей хуйни
-        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedValueChanged_1(object sender, EventArgs e)
         {
             if (comboBox1.Text == "ТЦ" && comboBox4.Text == "Вавилон")
             {
-                textBox13.Text = "здесь" + Environment.NewLine + "7" + Environment.NewLine + "документов" + Environment.NewLine + "верь" + Environment.NewLine + "мне" + Environment.NewLine + "я" + Environment.NewLine + "дельфин" + Environment.NewLine;
+                textBox13.Text = "Приложение № 1 Извлечение из плана Торгового Центра" + Environment.NewLine + "Приложение № 2 Акт Приема - передачи Помещения" + Environment.NewLine + "Приложение № 3 Спецификация Помещения" + Environment.NewLine + "Приложение № 4 Правила и Положения Торгового Центра" + Environment.NewLine + "Приложение № 5 Торговый профиль" + Environment.NewLine + "Приложение №6 Проект адаптации" + Environment.NewLine + "Приложение №7 Доверенность" + Environment.NewLine + "Приложение №8 Образцы факсимиле" + Environment.NewLine;
             }
             else if (comboBox1.Text == "ОФ" && comboBox4.Text == "Вавилон")
             {
-                textBox13.Text = "Здесь" + Environment.NewLine + "ориентировочно" + Environment.NewLine + "около" + Environment.NewLine + "пяти" + Environment.NewLine + "записей" + Environment.NewLine;
+                textBox13.Text = "Приложение №1 Выписка из плана БФЦ" + Environment.NewLine + "Приложение №2 Акт Приема - передачи Помещения" + Environment.NewLine + "Приложение №3 Правила и Положения БФЦ" + Environment.NewLine + "Приложение №4 Спецификация Помещение" + Environment.NewLine + "Приложение №5 Образцы факсимиле" + Environment.NewLine;
             }
             else if (comboBox1.Text == "КН-ГП")
             {

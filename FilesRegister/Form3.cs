@@ -19,7 +19,7 @@ namespace FilesRegister
         private void button2_Click(object sender, EventArgs e)
         {
             Form ifrm = Application.OpenForms[0];
-            Close();
+            Dispose();
             ifrm.Show();
         }      //вернуться к авторизации
 
