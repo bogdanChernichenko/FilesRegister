@@ -152,7 +152,7 @@ namespace FilesRegister
             textBox9.ReadOnly = true;
             textBox10.ReadOnly = true;
             textBox11.ReadOnly = true;
-            textBox11.ReadOnly = true;
+            textBox12.ReadOnly = true;
 
             comboBox1.Enabled = false;
             textBox13.Enabled = false;

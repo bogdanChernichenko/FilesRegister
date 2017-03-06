@@ -9,20 +9,22 @@ namespace FilesRegister
 {
     public partial class Form3 : Form
     {
-        string connectionString = @"Data Source = (LocalDB)\v12; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\DataBaseV12.mdf " + "; Integrated Security = False;";
+
         string sqQLiteConnectionString =  @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
         public Form3()
         {
             InitializeComponent();
         }
 
+        //вернуться к авторизации
         private void button2_Click(object sender, EventArgs e)
         {
             Form ifrm = Application.OpenForms[0];
             Dispose();
             ifrm.Show();
-        }      //вернуться к авторизации
+        }      
 
+        //создание нового пользователя
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == "")
@@ -61,7 +63,7 @@ namespace FilesRegister
                     }
                 }
              }
-          }     //создание нового пользователя
+          }     
 
         //Добавление пользователя в базу
         private void AddUserSQL()
