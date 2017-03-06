@@ -108,7 +108,6 @@ namespace FilesRegister
         private bool IsLoginUnique()
         {
             bool flag = true;
-            string sqlExpression = "sp_getUsers";
             List<string> credentials = new List<string>();
 
             try
@@ -117,8 +116,8 @@ namespace FilesRegister
 
                 {
                     connection.Open();
-                    SQLiteCommand command = new SQLiteCommand(sqlExpression, connection);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    SQLiteCommand command = new SQLiteCommand(connection);
+                    command.CommandText = "SELECT * from Credentials";
                     var reader = command.ExecuteReader();
 
                     if (reader.HasRows)
@@ -143,9 +142,9 @@ namespace FilesRegister
 
             }
 
-            catch
+            catch (Exception)
             {
-                return true;
+                return false;
             }
         }
 

@@ -119,7 +119,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.KeyPreview = true;
+            this.MaximumSize = new System.Drawing.Size(743, 449);
+            this.MinimumSize = new System.Drawing.Size(743, 449);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

@@ -152,10 +152,14 @@ namespace FilesRegister
             textBox9.ReadOnly = true;
             textBox10.ReadOnly = true;
             textBox11.ReadOnly = true;
+            textBox11.ReadOnly = true;
 
             comboBox1.Enabled = false;
             textBox13.Enabled = false;
             comboBox3.Enabled = false;
+            comboBox4.Enabled = false;
+            comboBox5.Enabled = false;
+            comboBox6.Enabled = false;
 
             dateTimePicker1.Enabled = false;
             dateTimePicker2.Enabled = false;
@@ -175,6 +179,7 @@ namespace FilesRegister
                     command.ExecuteNonQuery();
                 }
             }
+            Dispose();
         }
 
         //выпиливаем башню и прочую хуйню 
@@ -267,6 +272,7 @@ namespace FilesRegister
                 MessageBox.Show("Запись обновлена успешно!");
 
             }
+            Dispose();
 
             }
     }
