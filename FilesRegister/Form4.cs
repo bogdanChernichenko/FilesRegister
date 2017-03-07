@@ -10,7 +10,7 @@ namespace FilesRegister
 {
     public partial class Form4 : Form
     {
-        string connectionString = @"Data Source = (LocalDB)\v12; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\DataBaseV12.mdf " + "; Integrated Security = False;";
+
         string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
 
         string _role;

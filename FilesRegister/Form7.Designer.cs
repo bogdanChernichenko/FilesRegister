@@ -41,7 +41,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 48);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Фильтруем, сегодня мы с тобой фильтруем!";
+            this.button1.Text = "Фильтровать";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -64,7 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 9);
+            this.label1.Location = new System.Drawing.Point(53, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 5;
@@ -91,7 +91,7 @@
             "Все столбцы"});
             this.comboBox1.Location = new System.Drawing.Point(13, 26);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(140, 21);
             this.comboBox1.TabIndex = 6;
             // 
             // Form7

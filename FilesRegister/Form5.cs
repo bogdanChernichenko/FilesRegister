@@ -222,6 +222,38 @@ namespace FilesRegister
             }
         }
 
+        //заполняем адрес и наименование
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "Вавилон")
+            {
+                textBox1.Text = "Маршала Малиновского ул., 2, г. Днепр";
+                textBox2.Text = "Вавилон-1, МФЦ";
+                comboBox1.Visible = true;
+                label17.Visible = true;
+                comboBox5.Visible = true;
+            }
+            else if (comboBox1.Text == "КН-ГП")
+            {
+                textBox1.Text = "Святослава Храброго ул., 35/пер. Ушинского 1, г.Днепр";
+                textBox2.Text = "ДомЪ и ИнтерьерЪ,ТЦ";
+                comboBox4.Visible = true;
+                label17.Visible = false;
+                comboBox5.Visible = false;
+                comboBox5.Text = "";
+            }
+            else
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
+                comboBox4.Visible = false;
+                label17.Visible = false;
+                comboBox5.Visible = false;
+                comboBox4.Text = "";
+                comboBox5.Text = "";
+            }
+        }
+
         //Редактирование записи
         private void button1_Click(object sender, EventArgs e)
         {

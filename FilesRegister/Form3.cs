@@ -29,15 +29,15 @@ namespace FilesRegister
         {
             if (textBox1.Text == "")
             {
-                MessageBox.Show("Поле логин не может быть пустым");
+                MessageBox.Show("Поле логин не может быть пустым","Ошибка!");
             }
             else if (textBox2.Text == "")
             {
-                MessageBox.Show(" Поле пароль не может быть пустым");
+                MessageBox.Show(" Поле пароль не может быть пустым", "Ошибка!");
             }
             else if (comboBox1.Text == "")
             {
-                MessageBox.Show("Пожалуйста выберите роль");
+                MessageBox.Show("Пожалуйста выберите роль", "Ошибка!");
             }
             else
             {
@@ -106,6 +106,7 @@ namespace FilesRegister
                 MessageBox.Show("Пользователь добавлен успешно!");
             }
         }
+
         //Проверка не занят ли логин
         private bool IsLoginUnique()
         {
@@ -150,6 +151,7 @@ namespace FilesRegister
             }
         }
 
+        //тушим свет
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();

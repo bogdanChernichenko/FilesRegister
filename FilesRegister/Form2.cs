@@ -131,6 +131,7 @@ namespace FilesRegister
             }
         }
 
+        //Отображаем все записи и закрашиваем Да/Нет зелёным/Красным
         private void Form2_Shown(object sender, EventArgs e)
         {
             UpdateGrid();
@@ -147,6 +148,13 @@ namespace FilesRegister
                     dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.DarkRed;
                 }
             }
+        }
+
+        //Открываем фильтр
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form7 f7 = new Form7();
+            f7.ShowDialog(this);
         }
     }
 }

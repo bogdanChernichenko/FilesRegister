@@ -94,5 +94,10 @@ namespace FilesRegister
                 button1_Click(null,new EventArgs());
             }
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
