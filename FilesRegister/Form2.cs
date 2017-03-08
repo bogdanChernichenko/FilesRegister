@@ -31,8 +31,6 @@ namespace FilesRegister
             {
                 this.button2.Visible = false;
             }
-
-            paintYesNo();
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -153,7 +151,7 @@ namespace FilesRegister
             }
         }
 
-
+        //Повторное закрашивание ячеек при сортировке
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             paintYesNo();
