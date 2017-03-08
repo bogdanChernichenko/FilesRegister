@@ -9,7 +9,6 @@ namespace FilesRegister
 {
     public partial class Form5 : Form
     {
-        string connectionString = @"Data Source = (LocalDB)\v12; AttachDbFilename =" + Directory.GetCurrentDirectory() + "\\DataBaseV12.mdf " + "; Integrated Security = False;";
         string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
         string _role,_documentId;
         public Form5()
@@ -240,17 +239,12 @@ namespace FilesRegister
                 comboBox4.Visible = true;
                 label17.Visible = false;
                 comboBox5.Visible = false;
-                comboBox5.Text = "";
             }
             else
             {
-                textBox1.Text = "";
-                textBox2.Text = "";
                 comboBox4.Visible = false;
                 label17.Visible = false;
                 comboBox5.Visible = false;
-                comboBox4.Text = "";
-                comboBox5.Text = "";
             }
         }
 
@@ -302,7 +296,6 @@ namespace FilesRegister
                 command.ExecuteNonQuery();
 
                 MessageBox.Show("Запись обновлена успешно!");
-
             }
             Dispose();
 

@@ -83,9 +83,19 @@ namespace FilesRegister.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap e1nmg {
+        internal static System.Drawing.Bitmap artleo1 {
             get {
-                object obj = ResourceManager.GetObject("e1nmg", resourceCulture);
+                object obj = ResourceManager.GetObject("artleo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap artleo2 {
+            get {
+                object obj = ResourceManager.GetObject("artleo2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,16 +113,6 @@ namespace FilesRegister.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fon__41___1_ {
-            get {
-                object obj = ResourceManager.GetObject("fon (41) (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap images {
             get {
                 object obj = ResourceManager.GetObject("images", resourceCulture);
@@ -123,9 +123,9 @@ namespace FilesRegister.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Блик_и_пузырьки {
+        internal static System.Drawing.Bitmap klassicheskaya_zastavka_320x480 {
             get {
-                object obj = ResourceManager.GetObject("Блик-и-пузырьки", resourceCulture);
+                object obj = ResourceManager.GetObject("klassicheskaya_zastavka-320x480", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

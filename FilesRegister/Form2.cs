@@ -88,6 +88,7 @@ namespace FilesRegister
             catch (Exception)
             {
             }
+            paintYesNo();
         }
 
         //Открываем редактирование записи по двойному клику
@@ -135,19 +136,7 @@ namespace FilesRegister
         private void Form2_Shown(object sender, EventArgs e)
         {
             UpdateGrid();
-            string s = "";
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            {
-                s = dataGridView1.Rows[i].Cells[14].Value.ToString();
-                if (s.Contains("Да"))
-                {
-                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.Green;
-                }
-                else
-                {
-                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.DarkRed;
-                }
-            }
+            paintYesNo();
         }
 
         //Открываем фильтр
@@ -155,6 +144,24 @@ namespace FilesRegister
         {
             Form7 f7 = new Form7();
             f7.ShowDialog(this);
+        }
+
+        //Закрашиваем фон ячейки документов где Да/Нет
+        private void paintYesNo ()
+        {
+            string s = "";
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                s = dataGridView1.Rows[i].Cells[14].Value.ToString();
+                if (s.Contains("Да"))
+                {
+                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+                }
+                else
+                {
+                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.IndianRed;
+                }
+            }
         }
     }
 }
