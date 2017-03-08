@@ -31,6 +31,8 @@ namespace FilesRegister
             {
                 this.button2.Visible = false;
             }
+
+            paintYesNo();
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -106,20 +108,7 @@ namespace FilesRegister
         private void button3_Click(object sender, EventArgs e)
         {
             UpdateGrid();
-            string s = "";
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            {
-                s = dataGridView1.Rows[i].Cells[14].Value.ToString();
-                if (s.Contains("Да"))
-                {
-                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.Green;
-                }
-                else
-                {
-                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.DarkRed;
-                }
-
-            }
+            paintYesNo();
         }
 
         //Хоткей для фильтра
@@ -162,6 +151,12 @@ namespace FilesRegister
                     dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.IndianRed;
                 }
             }
+        }
+
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            paintYesNo();
         }
     }
 }
