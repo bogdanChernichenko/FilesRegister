@@ -26,8 +26,16 @@ namespace FilesRegister
                     {
                         if (f2.dataGridView1[c, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
-                            f2.dataGridView1.Rows[i].Visible = true;
-                            break;
+                            if (f2.dataGridView1[c, i].ColumnIndex == 1)
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                f2.dataGridView1.Rows[i].Visible = true;
+                                break;
+                            }
+
                         }
                     }
                 }
@@ -50,6 +58,15 @@ namespace FilesRegister
 
             Dispose();
             
+        }
+
+        //закрываем фильтр при нажании кнопки Esc
+        private void Form7_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Dispose();
+            }
         }
     }
 }

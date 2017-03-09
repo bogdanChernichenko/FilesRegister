@@ -93,6 +93,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(140, 21);
             this.comboBox1.TabIndex = 6;
+            this.comboBox1.SelectedItem = "Все столбцы";
             // 
             // Form7
             // 
@@ -110,6 +111,7 @@
             this.Name = "Form7";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Фильтр";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form7_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
