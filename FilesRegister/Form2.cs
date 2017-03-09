@@ -178,7 +178,7 @@ namespace FilesRegister
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
                 s = dataGridView1.Rows[i].Cells[14].Value.ToString();
-                //if (s.Contains("Приложение"))
+
                 if (s.Length != 0)
                 {
                     dataGridView1.Rows[i].Cells[14].Value = "Документы есть";
@@ -197,6 +197,13 @@ namespace FilesRegister
             {
                 string s = dataGridView1.Rows[i].Cells[9].Value.ToString();
                 string[] word = s.Split('\n');
+                for (int j = 0; j < word.Length; j++)
+                {
+                    if (word[j].Length == 0)
+                    {
+                        word[j] = "Отсутсвует";
+                    }
+                }
                 dataGridView1.Rows[i].Cells[9].Value = "Помещение" + '\n' + word[0] + '\n' + "Башня" + '\n' + word[1] + '\n' + "Этаж" + '\n' + word[2] + '\n' + "Номер" + '\n' + word[3];
             }
         }
