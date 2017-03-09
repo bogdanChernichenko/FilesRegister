@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -11,11 +12,19 @@ namespace FilesRegister
     public partial class Form4 : Form
     {
 
-        string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
+    string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
 
         string _role;
         Form2 f2 = new Form2();
-        
+
+        private void EnableDoubleBuffering()
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer |
+               ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint,
+               true);
+            this.UpdateStyles();
+        }
         public Form4()
         {
             InitializeComponent();
@@ -23,6 +32,7 @@ namespace FilesRegister
 
         public Form4(string role)
         {
+            EnableDoubleBuffering();
             InitializeComponent();
             _role = role;
         }
@@ -255,6 +265,107 @@ namespace FilesRegister
             else
             {
                 textBox13.Text = "";
+            }
+        }
+
+        //События для выделения текста Ctrl+A
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox1.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox2.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox3.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox4.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox9_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox9.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox5_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox5.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox6_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox6.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox7_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox7.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox8_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox8.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox13_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox13.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+        private void textBox11_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                textBox11.SelectAll();
+                //убираем звуковое сопровождение при нажатии клавиш
+                e.Handled = e.SuppressKeyPress = true;
             }
         }
     }

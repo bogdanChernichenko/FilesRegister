@@ -1,4 +1,7 @@
-﻿namespace FilesRegister
+﻿using System;
+using System.Windows.Forms;
+
+namespace FilesRegister
 {
     partial class Form5
     {
@@ -19,6 +22,35 @@
             }
             base.Dispose(disposing);
         }
+
+        //уменьшает лаги для фонового изображения
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED  
+                if (this.IsXpOr2003 == true)
+                    cp.ExStyle |= 0x00080000;  // Turn on WS_EX_LAYERED
+                return cp;
+            }
+        }
+        private Boolean IsXpOr2003
+        {
+            get
+            {
+                OperatingSystem os = Environment.OSVersion;
+                Version vs = os.Version;
+                if (os.Platform == PlatformID.Win32NT)
+                    if ((vs.Major == 5) && (vs.Minor != 0))
+                        return true;
+                    else
+                        return false;
+                else
+                    return false;
+            }
+        }
+
 
         #region Windows Form Designer generated code
 
@@ -81,9 +113,9 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(2, 648);
+            this.button1.Location = new System.Drawing.Point(2, 631);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 23);
+            this.button1.Size = new System.Drawing.Size(179, 40);
             this.button1.TabIndex = 21;
             this.button1.Text = "Редактировать запись";
             this.button1.UseVisualStyleBackColor = true;
@@ -146,6 +178,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(239, 35);
             this.textBox3.TabIndex = 4;
+            this.textBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
             // 
             // textBox4
             // 
@@ -154,6 +187,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(239, 35);
             this.textBox4.TabIndex = 5;
+            this.textBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyDown);
             // 
             // label6
             // 
@@ -207,6 +241,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(239, 35);
             this.textBox7.TabIndex = 12;
+            this.textBox7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox7_KeyDown);
             // 
             // label17
             // 
@@ -297,6 +332,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(239, 35);
             this.textBox6.TabIndex = 8;
+            this.textBox6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox6_KeyDown);
             // 
             // textBox5
             // 
@@ -305,6 +341,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(239, 35);
             this.textBox5.TabIndex = 6;
+            this.textBox5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox5_KeyDown);
             // 
             // tableLayoutPanel4
             // 
@@ -362,6 +399,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(261, 20);
             this.textBox8.TabIndex = 13;
+            this.textBox8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox8_KeyDown);
             // 
             // label9
             // 
@@ -409,6 +447,7 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(261, 20);
             this.textBox9.TabIndex = 14;
+            this.textBox9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox9_KeyDown);
             // 
             // label13
             // 
@@ -480,6 +519,7 @@
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(208, 131);
             this.textBox11.TabIndex = 20;
+            this.textBox11.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox11_KeyDown);
             // 
             // textBox13
             // 
@@ -488,13 +528,14 @@
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(261, 169);
             this.textBox13.TabIndex = 16;
+            this.textBox13.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox13_KeyDown);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(148, 648);
+            this.button2.Location = new System.Drawing.Point(240, 631);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 23);
+            this.button2.Size = new System.Drawing.Size(199, 40);
             this.button2.TabIndex = 22;
             this.button2.Text = "Удалить запись";
             this.button2.UseVisualStyleBackColor = true;
@@ -577,6 +618,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(241, 67);
             this.textBox1.TabIndex = 2;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // textBox2
             // 
@@ -585,6 +627,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(241, 38);
             this.textBox2.TabIndex = 3;
+            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
             // Form5
             // 

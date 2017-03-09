@@ -33,6 +33,7 @@ namespace FilesRegister
             }
         }
 
+        //Дефолтный конструктор
         private void Form2_Load(object sender, EventArgs e)
         {
 

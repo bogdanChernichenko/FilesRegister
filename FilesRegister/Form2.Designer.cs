@@ -55,6 +55,9 @@ namespace FilesRegister
             this.button3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button4 = new System.Windows.Forms.Button();
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBaseV12DataSet)).BeginInit();
@@ -84,12 +87,12 @@ namespace FilesRegister
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(1005, 305);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
-            this.dataGridView1.RowHeadersVisible = false;
             // 
             // Counter
             // 
@@ -130,17 +133,9 @@ namespace FilesRegister
             this.button2.Size = new System.Drawing.Size(219, 30);
             this.button2.TabIndex = 2;
             this.button2.Text = "Новая запись";
+            this.toolTip3.SetToolTip(this.button2, "Хоткей для создания новой записи Ctrl+N");
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // Create the ToolTip and associate with the Form container.
-            ToolTip toolTip3 = new ToolTip();
-            // Set up the delays for the ToolTip.
-            toolTip3.AutoPopDelay = 5000;
-            toolTip3.InitialDelay = 900;
-            toolTip3.ReshowDelay = 500;
-            // Force the ToolTip text to be displayed whether or not the form is active.
-            toolTip3.ShowAlways = true;
-            toolTip3.SetToolTip(this.button2, "Хоткей для создания новой записи Ctrl+N");
             // 
             // button1
             // 
@@ -159,17 +154,9 @@ namespace FilesRegister
             this.button3.Size = new System.Drawing.Size(161, 30);
             this.button3.TabIndex = 3;
             this.button3.Text = "Обновить таблицу";
+            this.toolTip2.SetToolTip(this.button3, "Хоткей для обновления таблицы F5");
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // Create the ToolTip and associate with the Form container.
-            ToolTip toolTip2 = new ToolTip();
-            // Set up the delays for the ToolTip.
-            toolTip2.AutoPopDelay = 5000;
-            toolTip2.InitialDelay = 900;
-            toolTip2.ReshowDelay = 500;
-            // Force the ToolTip text to be displayed whether or not the form is active.
-            toolTip2.ShowAlways = true;
-            toolTip2.SetToolTip(this.button3, "Хоткей для обновления таблицы F5");
             // 
             // tableLayoutPanel1
             // 
@@ -199,18 +186,30 @@ namespace FilesRegister
             this.button4.Size = new System.Drawing.Size(153, 30);
             this.button4.TabIndex = 4;
             this.button4.Text = "Фильтр";
+            this.toolTip1.SetToolTip(this.button4, "Хоткей для фильтра Ctrl+F");
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-
-            // Create the ToolTip and associate with the Form container.
-            ToolTip toolTip1 = new ToolTip();
-            // Set up the delays for the ToolTip.
-            toolTip1.AutoPopDelay = 5000;
-            toolTip1.InitialDelay = 900;
-            toolTip1.ReshowDelay = 500;
-            // Force the ToolTip text to be displayed whether or not the form is active.
-            toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(this.button4, "Хоткей для фильтра Ctrl+F");
+            // 
+            // toolTip3
+            // 
+            this.toolTip3.AutoPopDelay = 5000;
+            this.toolTip3.InitialDelay = 900;
+            this.toolTip3.ReshowDelay = 500;
+            this.toolTip3.ShowAlways = true;
+            // 
+            // toolTip2
+            // 
+            this.toolTip2.AutoPopDelay = 5000;
+            this.toolTip2.InitialDelay = 900;
+            this.toolTip2.ReshowDelay = 500;
+            this.toolTip2.ShowAlways = true;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 900;
+            this.toolTip1.ReshowDelay = 500;
+            this.toolTip1.ShowAlways = true;
             // 
             // Form2
             // 
@@ -248,5 +247,8 @@ namespace FilesRegister
         private Button button3;
         private TableLayoutPanel tableLayoutPanel1;
         private Button button4;
+        private ToolTip toolTip3;
+        private ToolTip toolTip2;
+        private ToolTip toolTip1;
     }
 }
