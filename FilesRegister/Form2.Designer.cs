@@ -132,6 +132,15 @@ namespace FilesRegister
             this.button2.Text = "Новая запись";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // Create the ToolTip and associate with the Form container.
+            ToolTip toolTip3 = new ToolTip();
+            // Set up the delays for the ToolTip.
+            toolTip3.AutoPopDelay = 5000;
+            toolTip3.InitialDelay = 900;
+            toolTip3.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip3.ShowAlways = true;
+            toolTip3.SetToolTip(this.button2, "Хоткей для создания новой записи Ctrl+N");
             // 
             // button1
             // 
@@ -152,6 +161,15 @@ namespace FilesRegister
             this.button3.Text = "Обновить таблицу";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // Create the ToolTip and associate with the Form container.
+            ToolTip toolTip2 = new ToolTip();
+            // Set up the delays for the ToolTip.
+            toolTip2.AutoPopDelay = 5000;
+            toolTip2.InitialDelay = 900;
+            toolTip2.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip2.ShowAlways = true;
+            toolTip2.SetToolTip(this.button3, "Хоткей для обновления таблицы F5");
             // 
             // tableLayoutPanel1
             // 
@@ -188,7 +206,7 @@ namespace FilesRegister
             ToolTip toolTip1 = new ToolTip();
             // Set up the delays for the ToolTip.
             toolTip1.AutoPopDelay = 5000;
-            toolTip1.InitialDelay = 100;
+            toolTip1.InitialDelay = 900;
             toolTip1.ReshowDelay = 500;
             // Force the ToolTip text to be displayed whether or not the form is active.
             toolTip1.ShowAlways = true;

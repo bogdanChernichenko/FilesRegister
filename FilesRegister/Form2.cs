@@ -109,13 +109,22 @@ namespace FilesRegister
             paintYesNo();
         }
 
-        //Хоткей для фильтра
+        //Хоткей для фильтра и обновы таблицы
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.F)
             {
                 Form7 f7 = new Form7();   
                 f7.ShowDialog(this);
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                UpdateGrid();
+                paintYesNo();
+            }
+            else if (e.Control && e.KeyCode == Keys.N)
+            {
+                button2_Click(e,new EventArgs());
             }
         }
 
