@@ -108,6 +108,8 @@ namespace FilesRegister
         {
             UpdateGrid();
             paintYesNo();
+            PrilozeniaCut();
+            TowerAdd();
         }
 
         //Хоткей для фильтра и обновы таблицы
@@ -134,6 +136,8 @@ namespace FilesRegister
         {
             UpdateGrid();
             paintYesNo();
+            PrilozeniaCut();
+            TowerAdd();
         }
 
         //Открываем фильтр
@@ -149,14 +153,14 @@ namespace FilesRegister
             string s = "";
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                s = dataGridView1.Rows[i].Cells[14].Value.ToString();
+                s = dataGridView1.Rows[i].Cells[15].Value.ToString();
                 if (s.Contains("Да"))
                 {
-                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+                    dataGridView1.Rows[i].Cells[15].Style.BackColor = System.Drawing.Color.MediumSeaGreen;
                 }
                 else
                 {
-                    dataGridView1.Rows[i].Cells[14].Style.BackColor = System.Drawing.Color.IndianRed;
+                    dataGridView1.Rows[i].Cells[15].Style.BackColor = System.Drawing.Color.IndianRed;
                 }
             }
         }
@@ -165,6 +169,36 @@ namespace FilesRegister
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             paintYesNo();
+        }
+
+        //Сокращаем запись в ячейке, если есть слово "Приложение" на Есть документы
+        private void PrilozeniaCut ()
+        {
+            string s = "";
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                s = dataGridView1.Rows[i].Cells[14].Value.ToString();
+                //if (s.Contains("Приложение"))
+                if (s.Length != 0)
+                {
+                    dataGridView1.Rows[i].Cells[14].Value = "Документы есть";
+                }
+                else
+                {
+                    dataGridView1.Rows[i].Cells[14].Value = "Документы отсутствуют";
+                }
+            }
+        }
+
+        //добавляем слова ахуительная башня, невообразимый этаж и номер к ячейкам
+        private void TowerAdd ()
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                string s = dataGridView1.Rows[i].Cells[9].Value.ToString();
+                string[] word = s.Split('\n');
+                dataGridView1.Rows[i].Cells[9].Value = "Помещение" + '\n' + word[0] + '\n' + "Башня" + '\n' + word[1] + '\n' + "Этаж" + '\n' + word[2] + '\n' + "Номер" + '\n' + word[3];
+            }
         }
     }
 }

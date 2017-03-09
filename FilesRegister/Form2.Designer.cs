@@ -47,8 +47,23 @@ namespace FilesRegister
             this.dataGridView1 = new FilesRegister.Form2.DataGridViewEx();
             this.Counter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.направлениеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.адресDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.наименованиеОбъектаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.юрЛицоКорпорацииDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.контрагентDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.номерДоговораDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.помещениеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.площадьDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.аренднаяСтавкаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.другиеПлатежиDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.датаОкончанияДоговораDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.документыDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.документВыданDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataBaseV12DataSet = new FilesRegister.DataBaseV12DataSet();
+            this.dataBaseV12DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.documentsTableAdapter = new FilesRegister.DataBaseV12DataSetTableAdapters.DocumentsTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -61,6 +76,7 @@ namespace FilesRegister
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBaseV12DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataBaseV12DataSetBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,13 +85,30 @@ namespace FilesRegister
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Counter,
-            this.Column1});
+            this.Column1,
+            this.idDataGridViewTextBoxColumn,
+            this.направлениеDataGridViewTextBoxColumn,
+            this.адресDataGridViewTextBoxColumn,
+            this.наименованиеОбъектаDataGridViewTextBoxColumn,
+            this.юрЛицоКорпорацииDataGridViewTextBoxColumn,
+            this.контрагентDataGridViewTextBoxColumn,
+            this.номерДоговораDataGridViewTextBoxColumn,
+            this.помещениеDataGridViewTextBoxColumn,
+            this.площадьDataGridViewTextBoxColumn,
+            this.аренднаяСтавкаDataGridViewTextBoxColumn,
+            this.другиеПлатежиDataGridViewTextBoxColumn,
+            this.датаОкончанияДоговораDataGridViewTextBoxColumn,
+            this.документыDataGridViewTextBoxColumn,
+            this.документВыданDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.documentsBindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -112,6 +145,105 @@ namespace FilesRegister
             this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // направлениеDataGridViewTextBoxColumn
+            // 
+            this.направлениеDataGridViewTextBoxColumn.DataPropertyName = "Направление";
+            this.направлениеDataGridViewTextBoxColumn.HeaderText = "Направление";
+            this.направлениеDataGridViewTextBoxColumn.Name = "направлениеDataGridViewTextBoxColumn";
+            this.направлениеDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // адресDataGridViewTextBoxColumn
+            // 
+            this.адресDataGridViewTextBoxColumn.DataPropertyName = "Адрес";
+            this.адресDataGridViewTextBoxColumn.HeaderText = "Адрес";
+            this.адресDataGridViewTextBoxColumn.Name = "адресDataGridViewTextBoxColumn";
+            this.адресDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // наименованиеОбъектаDataGridViewTextBoxColumn
+            // 
+            this.наименованиеОбъектаDataGridViewTextBoxColumn.DataPropertyName = "НаименованиеОбъекта";
+            this.наименованиеОбъектаDataGridViewTextBoxColumn.HeaderText = "Наименование Объекта";
+            this.наименованиеОбъектаDataGridViewTextBoxColumn.Name = "наименованиеОбъектаDataGridViewTextBoxColumn";
+            this.наименованиеОбъектаDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // юрЛицоКорпорацииDataGridViewTextBoxColumn
+            // 
+            this.юрЛицоКорпорацииDataGridViewTextBoxColumn.DataPropertyName = "ЮрЛицоКорпорации";
+            this.юрЛицоКорпорацииDataGridViewTextBoxColumn.HeaderText = "Юр. Лицо Корпорации";
+            this.юрЛицоКорпорацииDataGridViewTextBoxColumn.Name = "юрЛицоКорпорацииDataGridViewTextBoxColumn";
+            this.юрЛицоКорпорацииDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // контрагентDataGridViewTextBoxColumn
+            // 
+            this.контрагентDataGridViewTextBoxColumn.DataPropertyName = "Контрагент";
+            this.контрагентDataGridViewTextBoxColumn.HeaderText = "Контрагент";
+            this.контрагентDataGridViewTextBoxColumn.Name = "контрагентDataGridViewTextBoxColumn";
+            this.контрагентDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // номерДоговораDataGridViewTextBoxColumn
+            // 
+            this.номерДоговораDataGridViewTextBoxColumn.DataPropertyName = "НомерДоговора";
+            this.номерДоговораDataGridViewTextBoxColumn.HeaderText = "Номер Договора";
+            this.номерДоговораDataGridViewTextBoxColumn.Name = "номерДоговораDataGridViewTextBoxColumn";
+            this.номерДоговораDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // помещениеDataGridViewTextBoxColumn
+            // 
+            this.помещениеDataGridViewTextBoxColumn.DataPropertyName = "Помещение";
+            this.помещениеDataGridViewTextBoxColumn.HeaderText = "Помещение";
+            this.помещениеDataGridViewTextBoxColumn.Name = "помещениеDataGridViewTextBoxColumn";
+            this.помещениеDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // площадьDataGridViewTextBoxColumn
+            // 
+            this.площадьDataGridViewTextBoxColumn.DataPropertyName = "Площадь";
+            this.площадьDataGridViewTextBoxColumn.HeaderText = "Площадь";
+            this.площадьDataGridViewTextBoxColumn.Name = "площадьDataGridViewTextBoxColumn";
+            this.площадьDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // аренднаяСтавкаDataGridViewTextBoxColumn
+            // 
+            this.аренднаяСтавкаDataGridViewTextBoxColumn.DataPropertyName = "АренднаяСтавка";
+            this.аренднаяСтавкаDataGridViewTextBoxColumn.HeaderText = "Арендная Ставка";
+            this.аренднаяСтавкаDataGridViewTextBoxColumn.Name = "аренднаяСтавкаDataGridViewTextBoxColumn";
+            this.аренднаяСтавкаDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // другиеПлатежиDataGridViewTextBoxColumn
+            // 
+            this.другиеПлатежиDataGridViewTextBoxColumn.DataPropertyName = "ДругиеПлатежи";
+            this.другиеПлатежиDataGridViewTextBoxColumn.HeaderText = "Другие Платежи";
+            this.другиеПлатежиDataGridViewTextBoxColumn.Name = "другиеПлатежиDataGridViewTextBoxColumn";
+            this.другиеПлатежиDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // датаОкончанияДоговораDataGridViewTextBoxColumn
+            // 
+            this.датаОкончанияДоговораDataGridViewTextBoxColumn.DataPropertyName = "ДатаОкончанияДоговора";
+            this.датаОкончанияДоговораDataGridViewTextBoxColumn.HeaderText = "Дата Окончания Договора";
+            this.датаОкончанияДоговораDataGridViewTextBoxColumn.Name = "датаОкончанияДоговораDataGridViewTextBoxColumn";
+            this.датаОкончанияДоговораDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // документыDataGridViewTextBoxColumn
+            // 
+            this.документыDataGridViewTextBoxColumn.DataPropertyName = "Документы";
+            this.документыDataGridViewTextBoxColumn.HeaderText = "Документы";
+            this.документыDataGridViewTextBoxColumn.Name = "документыDataGridViewTextBoxColumn";
+            this.документыDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // документВыданDataGridViewTextBoxColumn
+            // 
+            this.документВыданDataGridViewTextBoxColumn.DataPropertyName = "ДокументВыдан";
+            this.документВыданDataGridViewTextBoxColumn.HeaderText = "Документ Выдан";
+            this.документВыданDataGridViewTextBoxColumn.Name = "документВыданDataGridViewTextBoxColumn";
+            this.документВыданDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // documentsBindingSource
             // 
             this.documentsBindingSource.DataMember = "Documents";
@@ -121,6 +253,11 @@ namespace FilesRegister
             // 
             this.dataBaseV12DataSet.DataSetName = "DataBaseV12DataSet";
             this.dataBaseV12DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataBaseV12DataSetBindingSource
+            // 
+            this.dataBaseV12DataSetBindingSource.DataSource = this.dataBaseV12DataSet;
+            this.dataBaseV12DataSetBindingSource.Position = 0;
             // 
             // documentsTableAdapter
             // 
@@ -183,7 +320,7 @@ namespace FilesRegister
             // 
             this.button4.Location = new System.Drawing.Point(740, 3);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(153, 30);
+            this.button4.Size = new System.Drawing.Size(155, 30);
             this.button4.TabIndex = 4;
             this.button4.Text = "Фильтр";
             this.toolTip1.SetToolTip(this.button4, "Хоткей для фильтра Ctrl+F");
@@ -230,6 +367,7 @@ namespace FilesRegister
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBaseV12DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataBaseV12DataSetBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -240,8 +378,6 @@ namespace FilesRegister
         private DataBaseV12DataSet dataBaseV12DataSet;
         private BindingSource documentsBindingSource;
         private DataBaseV12DataSetTableAdapters.DocumentsTableAdapter documentsTableAdapter;
-        private DataGridViewTextBoxColumn Counter;
-        private DataGridViewTextBoxColumn Column1;
         private Button button2;
         private Button button1;
         private Button button3;
@@ -250,5 +386,22 @@ namespace FilesRegister
         private ToolTip toolTip3;
         private ToolTip toolTip2;
         private ToolTip toolTip1;
+        private BindingSource dataBaseV12DataSetBindingSource;
+        private DataGridViewTextBoxColumn Counter;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn направлениеDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn адресDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn наименованиеОбъектаDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn юрЛицоКорпорацииDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn контрагентDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn номерДоговораDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn помещениеDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn площадьDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn аренднаяСтавкаDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn другиеПлатежиDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn датаОкончанияДоговораDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn документыDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn документВыданDataGridViewTextBoxColumn;
     }
 }

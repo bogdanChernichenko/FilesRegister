@@ -311,6 +311,7 @@ namespace FilesRegister
             // textBox12
             // 
             this.textBox12.Location = new System.Drawing.Point(409, 180);
+            this.textBox12.Multiline = true;
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(86, 20);
             this.textBox12.TabIndex = 11;
