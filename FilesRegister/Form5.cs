@@ -91,7 +91,7 @@ namespace FilesRegister
                 textBox3.Text = documentsData[3];       //ЮрЛицо
                 textBox4.Text = documentsData[4];       //Контрагент
 
-                string[] dogovorNum = documentsData[5].Split(',');  //номерДоговора
+                string[] dogovorNum = documentsData[5].Split(' ');  //номерДоговора
                 if (dogovorNum.Length == 1)
                 {
                     textBox5.Text = dogovorNum[0];

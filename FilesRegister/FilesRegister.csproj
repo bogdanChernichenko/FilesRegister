@@ -53,7 +53,7 @@
     <StartupObject>FilesRegister.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>confirmation.ico</ApplicationIcon>
+    <ApplicationIcon>Nanosuit_icon_-_512.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -228,6 +228,7 @@
     <Content Include="Axialis_Icon_Workshop.ico" />
     <Content Include="confirmation.ico" />
     <Content Include="Cutesy_Doge_512-150x150.ico" />
+    <Content Include="Nanosuit_icon_-_512.ico" />
     <None Include="Resources\artleo.com_80702.jpg" />
     <None Include="Resources\artleo.com_80701.jpg" />
     <None Include="Resources\klassicheskaya_zastavka-320x480.jpg" />

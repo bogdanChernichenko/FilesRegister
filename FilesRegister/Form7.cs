@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FilesRegister
 {
     public partial class Form7 : Form
     {
+        string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
+        List<int> CheckIndexes = new List<int>();
 
         public Form7()
         {
@@ -43,6 +48,7 @@ namespace FilesRegister
             else
             {
                 int c = 0;
+                
                 switch (comboBox1.Text)
                 {
                     case "Направление":
@@ -85,33 +91,96 @@ namespace FilesRegister
                         c = 15;
                         break;
                 }
-                    
-
-                //int c = f2.dataGridView1.Columns[comboBox1.Text].Index;
+                
                 for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
                 {
                     f2.dataGridView1.CurrentCell = null;
-                    f2.dataGridView1.Rows[i].Visible = false;
+                    f2.dataGridView1.Rows[i].Visible = false;                    
+                }
 
-                    if (f2.dataGridView1[c, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                //очищаем список строк, которые нужно отобразить
+                List<int> temp = new List<int>();
+                for (int i = 0; i < checkedListBox1.CheckedIndices.Count; i ++)
+                {
+                    temp.Add(CheckIndexes[checkedListBox1.CheckedIndices[i]]);
+                }
+
+                //делаем видимыми строки, которые чекнуты в листе
+                for (int i = 0; i < temp.Count;i++)
+                {
+                    if (checkedListBox1.CheckedIndices.Count == 0)
                     {
-                        f2.dataGridView1.Rows[i].Visible = true;
+                        break;
                     }
-
+                    f2.dataGridView1.Rows[temp[i]].Visible = true;
                 }
             }
-
             Dispose();
             
         }
 
-        //закрываем фильтр при нажании кнопки Esc
-        private void Form7_KeyDown(object sender, KeyEventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            Form2 f2 = (Form2)this.Owner;
+            
+            
+            int c = 0;
+            switch (comboBox1.Text)
             {
-                Dispose();
+                case "Направление":
+                    c = 3;
+                    break;
+                case "Адрес":
+                    c = 4;
+                    break;
+                case "Наименование Объекта":
+                    c = 5;
+                    break;
+                case "Юр. Лицо Корпорации":
+                    c = 6;
+                    break;
+                case "Контрагент":
+                    c = 7;
+                    break;
+                case "Номер Договора":
+                    c = 8;
+                    break;
+                case "Помещение":
+                    c = 9;
+                    break;
+                case "Площадь":
+                    c = 10;
+                    break;
+                case "Арендная Ставка":
+                    c = 11;
+                    break;
+                case "Другие Платежи":
+                    c = 12;
+                    break;
+                case "Дата Окончания Договора":
+                    c = 13;
+                    break;
+                case "Документы":
+                    c = 14;
+                    break;
+                case "Документ Выдан":
+                    c = 15;
+                    break;
             }
+            checkedListBox1.Items.Clear();
+            CheckIndexes.Clear();
+            for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
+            {
+                if (f2.dataGridView1[c, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    CheckIndexes.Add(i);
+                    checkedListBox1.Items.AddRange(new object[]
+                    {
+                        f2.dataGridView1[c, i].Value.ToString()
+                    });
+                }
+            }
+
         }
     }
 }
