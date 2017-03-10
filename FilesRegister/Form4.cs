@@ -110,7 +110,7 @@ namespace FilesRegister
 
                 //SqlParameter dogovorNum = new SqlParameter
                 string dogovorNumber;
-                dogovorNumber = textBox9.Text + "," + comboBox1.Text;
+                dogovorNumber = textBox9.Text +" "+ comboBox1.Text;
                 SQLiteParameter dogovorNum = new SQLiteParameter
                 {
                     ParameterName = "@НомерДоговора",

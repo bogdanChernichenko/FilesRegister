@@ -42,7 +42,52 @@ namespace FilesRegister
             }
             else
             {
-                int c = f2.dataGridView1.Columns[comboBox1.Text].Index;
+                int c = 0;
+                switch (comboBox1.Text)
+                {
+                    case "Направление":
+                        c = 3;
+                        break;
+                    case "Адрес":
+                        c = 4;
+                        break;
+                    case "Наименование Объекта":
+                        c = 5;
+                        break;
+                    case "Юр. Лицо Корпорации":
+                        c = 6;
+                        break;
+                    case "Контрагент":
+                        c = 7;
+                        break;
+                    case "Номер Договора":
+                        c = 8;
+                        break;
+                    case "Помещение":
+                        c = 9;
+                        break;
+                    case "Площадь":
+                        c = 10;
+                        break;
+                    case "Арендная Ставка":
+                        c = 11;
+                        break;
+                    case "Другие Платежи":
+                        c = 12;
+                        break;
+                    case "Дата Окончания Договора":
+                        c = 13;
+                        break;
+                    case "Документы":
+                        c = 14;
+                        break;
+                    case "Документ Выдан":
+                        c = 15;
+                        break;
+                }
+                    
+
+                //int c = f2.dataGridView1.Columns[comboBox1.Text].Index;
                 for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
                 {
                     f2.dataGridView1.CurrentCell = null;
