@@ -180,6 +180,10 @@ namespace FilesRegister
                     });
                 }
             }
+            for (int i = 0; i < checkedListBox1.Items.Count;i++)
+            {
+                checkedListBox1.SetItemCheckState(i,CheckState.Checked);
+            }
 
         }
     }
