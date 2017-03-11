@@ -99,7 +99,7 @@ namespace FilesRegister
                 else
                 {
                     textBox5.Text = dogovorNum[0];
-                    comboBox4.SelectedItem = dogovorNum[1];
+                    comboBox4.SelectedItem = dogovorNum[dogovorNum.Length - 1];
                 }
                     
                 string[] pomeshenie = documentsData[6].Split('\n'); //помещение
@@ -198,18 +198,23 @@ namespace FilesRegister
                 comboBox5.Visible = false;
                 label17.Visible = false;
                 comboBox4.Visible = true;
+                comboBox5.Text = " ";
             }
             else if (comboBox1.Text == "Коммерческая недвижимость")
             {
                 comboBox5.Visible = false;
                 comboBox4.Visible = false;
                 label17.Visible = false;
+                comboBox4.Text = " ";
+                comboBox5.Text = " ";
             }
             else
             {
                 label17.Visible = true;
                 comboBox5.Visible = true;
                 comboBox4.Visible = true;
+                comboBox4.Text = " ";
+                comboBox5.Text = " ";
             }
         }
 
@@ -274,12 +279,28 @@ namespace FilesRegister
                 command.Parameters.Add(new SQLiteParameter("@Контрагент", textBox4.Text));
 
                 string dogovor;
-                dogovor = textBox5.Text + "," + comboBox4.Text;
+                if (comboBox1.Text != "Коммерческая недвижимость")
+                {
+                    dogovor = textBox5.Text + " " + comboBox4.Text;
+                }
+                else
+                {
+                    dogovor = textBox5.Text;
+                }
+                
                 command.Parameters.Add(new SQLiteParameter("@НомерДоговора", dogovor));
 
                 string pomeshenie;
-                pomeshenie = textBox6.Text + "\n" + comboBox5.Text + "\n" + comboBox6.Text + "\n" + textBox12.Text;
+                if (comboBox5.Visible == false)
+                {
+                pomeshenie = textBox6.Text + "\n" + "" + "\n" + comboBox6.Text + "\n" + textBox12.Text;
                 command.Parameters.Add(new SQLiteParameter("@Помещение", pomeshenie));
+                }
+                else
+                {
+                    pomeshenie = textBox6.Text + "\n" + comboBox5.Text + "\n" + comboBox6.Text + "\n" + textBox12.Text;
+                    command.Parameters.Add(new SQLiteParameter("@Помещение", pomeshenie));
+                }
                 command.Parameters.Add(new SQLiteParameter("@Площадь", textBox7.Text));
                 command.Parameters.Add(new SQLiteParameter("@АренднаяСтавка", textBox8.Text));
                 command.Parameters.Add(new SQLiteParameter("@ДругиеПлатежи", textBox9.Text));
@@ -307,7 +328,6 @@ namespace FilesRegister
                 MessageBox.Show("Запись обновлена успешно!");
             }
             Dispose();
-
             }
 
         //Событие для выделения текста по Ctrl+A

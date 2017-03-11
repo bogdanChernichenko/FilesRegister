@@ -123,6 +123,8 @@ namespace FilesRegister
             else if (e.KeyCode == Keys.F5)
             {
                 UpdateGrid();
+                PrilozeniaCut();
+                TowerAdd();
                 paintYesNo();
             }
             else if (e.Control && e.KeyCode == Keys.N)

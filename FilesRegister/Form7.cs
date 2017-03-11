@@ -27,6 +27,7 @@ namespace FilesRegister
                 {
                     f2.dataGridView1.CurrentCell = null;
                     f2.dataGridView1.Rows[i].Visible = false;
+
                     for (int c = 0; c < f2.dataGridView1.Columns.Count; c++)
                     {
                         if (f2.dataGridView1[c, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -122,9 +123,8 @@ namespace FilesRegister
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Form2 f2 = (Form2)this.Owner;
-            
-            
             int c = 0;
+
             switch (comboBox1.Text)
             {
                 case "Направление":
@@ -167,23 +167,53 @@ namespace FilesRegister
                     c = 15;
                     break;
             }
-            checkedListBox1.Items.Clear();
-            CheckIndexes.Clear();
-            for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
+            if (c != 0)
             {
-                if (f2.dataGridView1[c, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                checkedListBox1.Items.Clear();
+                CheckIndexes.Clear();
+                for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
                 {
-                    CheckIndexes.Add(i);
-                    checkedListBox1.Items.AddRange(new object[]
+                    if (f2.dataGridView1[c, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
+                        CheckIndexes.Add(i);
+                        checkedListBox1.Items.AddRange(new object[]
+                        {
                         f2.dataGridView1[c, i].Value.ToString()
-                    });
+                        });
+                    }
+                }
+                //Чекаем список
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    checkedListBox1.SetItemCheckState(i, CheckState.Checked);
                 }
             }
-            for (int i = 0; i < checkedListBox1.Items.Count;i++)
+            else
             {
-                checkedListBox1.SetItemCheckState(i,CheckState.Checked);
+                checkedListBox1.Items.Clear();
+                CheckIndexes.Clear();
+                for (int j = 3; j < f2.dataGridView1.Columns.Count;j++)
+                {
+                    for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
+                    {
+                        if (f2.dataGridView1[j, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            CheckIndexes.Add(i);
+                            checkedListBox1.Items.AddRange(new object[]
+                            {
+                                f2.dataGridView1[j, i].Value.ToString()
+                            });
+                        }
+                    }
+                }
+
+                //Чекаем список
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    checkedListBox1.SetItemCheckState(i, CheckState.Checked);
+                }
             }
+
 
         }
     }

@@ -185,6 +185,15 @@ namespace FilesRegister
                     };
                     command.Parameters.Add(documentsBroughtBy);
                 }
+                else if (comboBox3.Text == "")
+                {
+                    SQLiteParameter documentsBroughtBy = new SQLiteParameter
+                    {
+                        ParameterName = "@ДокументВыдан",
+                        Value = "Нет"
+                    };
+                    command.Parameters.Add(documentsBroughtBy);
+                }
                 else
                 {
                    document = comboBox3.Text + "\n" + textBox10.Text + "\n" + dateTimePicker2.Text + "\n" + textBox11.Text;
