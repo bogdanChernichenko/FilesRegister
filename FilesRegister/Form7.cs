@@ -173,9 +173,16 @@ namespace FilesRegister
                 CheckIndexes.Clear();
                 for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
                 {
+                    f2.dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                }
+
+                    for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
+                {
                     if (f2.dataGridView1[c, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         CheckIndexes.Add(i);
+                        f2.dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.LightSkyBlue;
+                        
                         checkedListBox1.Items.AddRange(new object[]
                         {
                         f2.dataGridView1[c, i].Value.ToString()
