@@ -181,8 +181,8 @@ namespace FilesRegister
                     if (f2.dataGridView1[c, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         CheckIndexes.Add(i);
+                        //подсвечиваем строки в гриде
                         f2.dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.LightSkyBlue;
-                        
                         checkedListBox1.Items.AddRange(new object[]
                         {
                         f2.dataGridView1[c, i].Value.ToString()
