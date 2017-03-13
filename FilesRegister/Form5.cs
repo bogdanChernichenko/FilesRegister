@@ -330,6 +330,27 @@ namespace FilesRegister
             Dispose();
             }
 
+        //Заполнение документов при выборе Вавилон и ТЦ/ОФ
+        private void comboBox4_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (comboBox4.Text == "ТЦ" && comboBox1.Text == "Вавилон")
+            {
+                textBox13.Text = "Приложение № 1 Извлечение из плана Торгового Центра" + Environment.NewLine + "Приложение № 2 Акт Приема - передачи Помещения" + Environment.NewLine + "Приложение № 3 Спецификация Помещения" + Environment.NewLine + "Приложение № 4 Правила и Положения Торгового Центра" + Environment.NewLine + "Приложение № 5 Торговый профиль" + Environment.NewLine + "Приложение №6 Проект адаптации" + Environment.NewLine + "Приложение №7 Доверенность" + Environment.NewLine + "Приложение №8 Образцы факсимиле" + Environment.NewLine;
+            }
+            else if (comboBox4.Text == "ОФ" && comboBox1.Text == "Вавилон")
+            {
+                textBox13.Text = "Приложение №1 Выписка из плана БФЦ" + Environment.NewLine + "Приложение №2 Акт Приема - передачи Помещения" + Environment.NewLine + "Приложение №3 Правила и Положения БФЦ" + Environment.NewLine + "Приложение №4 Спецификация Помещение" + Environment.NewLine + "Приложение №5 Образцы факсимиле" + Environment.NewLine;
+            }
+            else if (comboBox1.Text == "КН-ГП")
+            {
+                comboBox5.Visible = false;
+            }
+            else
+            {
+                textBox13.Text = "";
+            }
+        }
+
         //Событие для выделения текста по Ctrl+A
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {

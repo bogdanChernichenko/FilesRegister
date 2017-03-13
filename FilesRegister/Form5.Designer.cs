@@ -222,6 +222,7 @@ namespace FilesRegister
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(86, 21);
             this.comboBox4.TabIndex = 7;
+            this.comboBox4.SelectedValueChanged += new System.EventHandler(this.comboBox4_SelectedValueChanged);
             // 
             // label7
             // 
