@@ -237,6 +237,24 @@ namespace FilesRegister
                 label17.Visible = false;
                 comboBox5.Visible = false;
             }
+
+            //заполняем документы если ТЦ/ОФ
+            if (comboBox1.Text == "ТЦ" && comboBox4.Text == "Вавилон")
+            {
+                textBox13.Text = "Приложение № 1 Извлечение из плана Торгового Центра" + Environment.NewLine + "Приложение № 2 Акт Приема - передачи Помещения" + Environment.NewLine + "Приложение № 3 Спецификация Помещения" + Environment.NewLine + "Приложение № 4 Правила и Положения Торгового Центра" + Environment.NewLine + "Приложение № 5 Торговый профиль" + Environment.NewLine + "Приложение №6 Проект адаптации" + Environment.NewLine + "Приложение №7 Доверенность" + Environment.NewLine + "Приложение №8 Образцы факсимиле" + Environment.NewLine;
+            }
+            else if (comboBox1.Text == "ОФ" && comboBox4.Text == "Вавилон")
+            {
+                textBox13.Text = "Приложение №1 Выписка из плана БФЦ" + Environment.NewLine + "Приложение №2 Акт Приема - передачи Помещения" + Environment.NewLine + "Приложение №3 Правила и Положения БФЦ" + Environment.NewLine + "Приложение №4 Спецификация Помещение" + Environment.NewLine + "Приложение №5 Образцы факсимиле" + Environment.NewLine;
+            }
+            else if (comboBox1.Text == "КН-ГП")
+            {
+                comboBox5.Visible = false;
+            }
+            else
+            {
+                textBox13.Text = "";
+            }
         }
 
         //При выборе "ДА" открывает 3 контрола Кто? Где? Кого и сколько раз?
