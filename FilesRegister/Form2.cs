@@ -142,7 +142,12 @@ namespace FilesRegister
             TowerAdd();
             if (BleedingDogovors() != 0)
             {
-                MessageBox.Show("Найдено " + BleedingDogovors() + " договоров срок которых истекает менее, чем через месяц!","Внимание!");
+                if (BleedingDogovors() <= 4)
+                MessageBox.Show("Найдено " + BleedingDogovors() + " договора срок которых истекает менее, чем через месяц!","Внимание!");
+            }
+            else
+            {
+                MessageBox.Show("Найдено " + BleedingDogovors() + " договоров срок которых истекает менее, чем через месяц!", "Внимание!");
             }
             
         }
