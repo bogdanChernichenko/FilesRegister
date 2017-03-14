@@ -110,7 +110,14 @@ namespace FilesRegister
 
                 //SqlParameter dogovorNum = new SqlParameter
                 string dogovorNumber;
-                dogovorNumber = textBox9.Text +" "+ comboBox1.Text;
+                if (comboBox4.Text != "Коммерческая недвижимость")
+                {
+                    dogovorNumber = textBox9.Text + " " + comboBox1.Text;
+                }
+                else
+                {
+                    dogovorNumber = textBox9.Text;
+                }
                 SQLiteParameter dogovorNum = new SQLiteParameter
                 {
                     ParameterName = "@НомерДоговора",
@@ -120,14 +127,26 @@ namespace FilesRegister
 
                 //Помещение
                 string pomeshenie = "";
-                pomeshenie = textBox5.Text + "\n" + comboBox5.Text + "\n" + comboBox6.Text + "\n" + textBox12.Text;
-                SQLiteParameter builing = new SQLiteParameter
+                if (comboBox5.Visible == false)
                 {
-                    ParameterName = "@Помещение",
-                    Value = pomeshenie
-                };
-                command.Parameters.Add(builing);
-
+                    pomeshenie = textBox5.Text + "\n" + "" + "\n" + comboBox6.Text + "\n" + textBox12.Text;
+                    SQLiteParameter builing = new SQLiteParameter
+                    {
+                        ParameterName = "@Помещение",
+                        Value = pomeshenie
+                    };
+                    command.Parameters.Add(builing);
+                }
+                else
+                {
+                    pomeshenie = textBox5.Text + "\n" + comboBox5.Text + "\n" + comboBox6.Text + "\n" + textBox12.Text;
+                    SQLiteParameter builing = new SQLiteParameter
+                    {
+                        ParameterName = "@Помещение",
+                        Value = pomeshenie
+                    };
+                    command.Parameters.Add(builing);
+                }
                 //Площадь
                 SQLiteParameter size = new SQLiteParameter
                  {
