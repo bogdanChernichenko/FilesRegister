@@ -73,6 +73,7 @@ namespace FilesRegister
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBaseV12DataSet)).BeginInit();
@@ -267,7 +268,7 @@ namespace FilesRegister
             // 
             this.button2.Location = new System.Drawing.Point(3, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(219, 30);
+            this.button2.Size = new System.Drawing.Size(167, 30);
             this.button2.TabIndex = 2;
             this.button2.Text = "Новая запись";
             this.toolTip3.SetToolTip(this.button2, "Хоткей для создания новой записи Ctrl+N");
@@ -276,9 +277,9 @@ namespace FilesRegister
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(272, 3);
+            this.button1.Location = new System.Drawing.Point(176, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(226, 30);
+            this.button1.Size = new System.Drawing.Size(197, 30);
             this.button1.TabIndex = 0;
             this.button1.Text = "К авторизации";
             this.button1.UseVisualStyleBackColor = true;
@@ -286,7 +287,7 @@ namespace FilesRegister
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(542, 3);
+            this.button3.Location = new System.Drawing.Point(379, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(161, 30);
             this.button3.TabIndex = 3;
@@ -298,16 +299,18 @@ namespace FilesRegister
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 269F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 270F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 203F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button4, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button5, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 308);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -318,7 +321,7 @@ namespace FilesRegister
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(740, 3);
+            this.button4.Location = new System.Drawing.Point(556, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(155, 30);
             this.button4.TabIndex = 4;
@@ -347,6 +350,17 @@ namespace FilesRegister
             this.toolTip1.InitialDelay = 900;
             this.toolTip1.ReshowDelay = 500;
             this.toolTip1.ShowAlways = true;
+            // 
+            // button5
+            // 
+            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button5.Location = new System.Drawing.Point(722, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(186, 30);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Показать истекающие договора";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form2
             // 
@@ -403,5 +417,6 @@ namespace FilesRegister
         private DataGridViewTextBoxColumn датаОкончанияДоговораDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn документыDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn документВыданDataGridViewTextBoxColumn;
+        private Button button5;
     }
 }

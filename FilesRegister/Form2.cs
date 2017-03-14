@@ -140,6 +140,11 @@ namespace FilesRegister
             paintYesNo();
             PrilozeniaCut();
             TowerAdd();
+            if (BleedingDogovors() != 0)
+            {
+                MessageBox.Show("Найдено " + BleedingDogovors() + " договоров срок которых истекает менее, чем через месяц!","Внимание!");
+            }
+            
         }
 
         //Открываем фильтр
@@ -207,6 +212,48 @@ namespace FilesRegister
                     }
                 }
                 dataGridView1.Rows[i].Cells[9].Value = "Помещение" + '\n' + word[0] + '\n' + "Башня" + '\n' + word[1] + '\n' + "Этаж" + '\n' + word[2] + '\n' + "Номер" + '\n' + word[3];
+            }
+        }
+
+        //Ищем договора с итекающей датой...пиздец название
+        private int BleedingDogovors()
+        {
+            DateTime nowDate = DateTime.Now;
+            int count = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                string s = "";
+                s = dataGridView1.Rows[i].Cells[13].Value.ToString();
+                DateTime myDate = DateTime.ParseExact(s, "dd.MM.yyyy H:mm:ss",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+                TimeSpan ts = myDate - nowDate;
+                if (ts.Days <= 30)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        //Показываем договора с датой истечения < месяц
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DateTime nowDate = DateTime.Now;
+
+            for (int i = 0; i < this.dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1.CurrentCell = null;
+                dataGridView1.Rows[i].Visible = false;
+
+                string s = "";
+                s = dataGridView1.Rows[i].Cells[13].Value.ToString();
+                DateTime myDate = DateTime.ParseExact(s, "dd.MM.yyyy H:mm:ss",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+                TimeSpan ts = myDate - nowDate;
+                if (ts.Days <= 30)
+                {
+                    dataGridView1.Rows[i].Visible = true;
+                }
             }
         }
     }
