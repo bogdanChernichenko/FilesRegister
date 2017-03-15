@@ -16,7 +16,7 @@ namespace FilesRegister
             InitializeComponent();
         }
 
-        //неебический фильтр...наконец-то
+        //неебический фильтр...наконец-то. Нажатие кнопки фильтрации
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 f2 = (Form2)this.Owner;
@@ -92,34 +92,39 @@ namespace FilesRegister
                         c = 15;
                         break;
                 }
-                
+
+                //делаем невидимыми все строки
                 for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
                 {
                     f2.dataGridView1.CurrentCell = null;
                     f2.dataGridView1.Rows[i].Visible = false;                    
                 }
 
-                //очищаем список строк, которые нужно отобразить
-                List<int> temp = new List<int>();
+                //Записываем имена чекнутых записей
+                List<string> temp = new List<string>();
                 for (int i = 0; i < checkedListBox1.CheckedIndices.Count; i ++)
                 {
-                    temp.Add(CheckIndexes[checkedListBox1.CheckedIndices[i]]);
+                    temp.Add(checkedListBox1.CheckedItems[i].ToString());
                 }
 
                 //делаем видимыми строки, которые чекнуты в листе
-                for (int i = 0; i < temp.Count;i++)
+                for (int i = 0; i < f2.dataGridView1.Rows.Count - 1; i++)
                 {
-                    if (checkedListBox1.CheckedIndices.Count == 0)
+                    for (int j = 0; j < temp.Count; j++)
                     {
-                        break;
+                        if (f2.dataGridView1[c, i].Value.ToString() == temp[j])
+                        {
+                            f2.dataGridView1.Rows[i].Visible = true;
+                            break;
+                        }
                     }
-                    f2.dataGridView1.Rows[temp[i]].Visible = true;
+
                 }
             }
             Dispose();
-            
         }
 
+        //Начинаем выводить значения прдварительного фильтрования при вводе в поле "Значение"
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Form2 f2 = (Form2)this.Owner;
@@ -183,10 +188,15 @@ namespace FilesRegister
                         CheckIndexes.Add(i);
                         //подсвечиваем строки в гриде
                         f2.dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.LightSkyBlue;
-                        checkedListBox1.Items.AddRange(new object[]
+                        //Не добавляем повторно, если запись уже найдена
+                        if (checkedListBox1.Items.Contains(f2.dataGridView1[c, i].Value.ToString()) == false)
                         {
-                        f2.dataGridView1[c, i].Value.ToString()
-                        });
+                            checkedListBox1.Items.AddRange(new object[]
+                            {
+                                f2.dataGridView1[c, i].Value.ToString()
+                            });
+                        }
+
                     }
                 }
                 //Чекаем список
@@ -205,11 +215,15 @@ namespace FilesRegister
                     {
                         if (f2.dataGridView1[j, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
-                            CheckIndexes.Add(i);
-                            checkedListBox1.Items.AddRange(new object[]
+                            //Не добавляем повторно, если запись уже найдена
+                            if (checkedListBox1.Items.Contains(f2.dataGridView1[c, i].Value.ToString()) == false)
                             {
+                                CheckIndexes.Add(i);
+                                checkedListBox1.Items.AddRange(new object[]
+                                {
                                 f2.dataGridView1[j, i].Value.ToString()
-                            });
+                                });
+                            }
                         }
                     }
                 }

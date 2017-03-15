@@ -216,7 +216,7 @@ namespace FilesRegister
                         word[j] = "Отсутсвует";
                     }
                 }
-                dataGridView1.Rows[i].Cells[9].Value = "Помещение" + '\n' + word[0] + '\n' + "Башня" + '\n' + word[1] + '\n' + "Этаж" + '\n' + word[2] + '\n' + "Номер" + '\n' + word[3];
+                dataGridView1.Rows[i].Cells[9].Value = "Помещение " + word[0] + '\n' + "Башня " + word[1] + '\n' + "Этаж " + word[2] + '\n' + "Номер " + word[3];
             }
         }
 
