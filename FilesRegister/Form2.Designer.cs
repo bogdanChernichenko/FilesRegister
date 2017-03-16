@@ -70,10 +70,11 @@ namespace FilesRegister
             this.button3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBaseV12DataSet)).BeginInit();
@@ -311,6 +312,7 @@ namespace FilesRegister
             this.tableLayoutPanel1.Controls.Add(this.button2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button4, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button5, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button6, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 308);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -329,6 +331,17 @@ namespace FilesRegister
             this.toolTip1.SetToolTip(this.button4, "Хоткей для фильтра Ctrl+F");
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button5.Location = new System.Drawing.Point(722, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(186, 30);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Показать истекающие договора";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // toolTip3
             // 
@@ -351,16 +364,15 @@ namespace FilesRegister
             this.toolTip1.ReshowDelay = 500;
             this.toolTip1.ShowAlways = true;
             // 
-            // button5
+            // button6
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.Location = new System.Drawing.Point(722, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(186, 30);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Показать истекающие договора";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button6.Location = new System.Drawing.Point(914, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 30);
+            this.button6.TabIndex = 6;
+            this.button6.Text = "Экспорт";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form2
             // 
@@ -418,5 +430,6 @@ namespace FilesRegister
         private DataGridViewTextBoxColumn документыDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn документВыданDataGridViewTextBoxColumn;
         private Button button5;
+        private Button button6;
     }
 }

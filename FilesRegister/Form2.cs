@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace FilesRegister
 {
@@ -262,5 +264,90 @@ namespace FilesRegister
                 }
             }
         }
+
+        //кнопка экспорта
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ExportToExcel();
+        }
+        
+        //метод экспорта
+        private void ExportToExcel()
+        {
+            Excel.Application xlApp;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlApp = new Excel.Application();
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            string cs = sqQLiteConnectionString;
+            string data = String.Empty;
+
+            int i = 0;
+            int j = 0;
+
+            using (SQLiteConnection con = new SQLiteConnection(cs))
+            {
+                con.Open();
+
+                string stm = "SELECT * FROM Documents";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(stm, con))
+                {
+                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read()) // Reading Rows
+                        {
+                            for (j = 1; j <= rdr.FieldCount - 1; j++) // Looping throw colums
+                            {
+                                if (i == 0)
+                                {
+                                    xlWorkSheet.Cells[i + 1, j ] = this.dataGridView1.Columns[j+2].HeaderText;
+                                }
+                                else
+                                {
+                                    data = rdr.GetValue(j).ToString();
+                                    xlWorkSheet.Cells[i + 1, j ] = data;
+                                }
+
+                            }
+                            i++;
+                        }
+                    }
+                }
+                con.Close();
+                MessageBox.Show("Экспорт завершён успешно!", "Уведомление");
+            }
+
+            xlWorkBook.SaveAs(Directory.GetCurrentDirectory()+"\\sqliteToExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlApp);
+        }
+        
+        //я хз что это, но это тоже нужно для экспорта
+        private static void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+    
     }
 }

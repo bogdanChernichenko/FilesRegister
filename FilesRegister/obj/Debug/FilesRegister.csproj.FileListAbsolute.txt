@@ -22,3 +22,4 @@ C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\
 C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\bin\Debug\System.Data.SQLite.xml
 C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\obj\Debug\FilesRegister.Form8.resources
+C:\Users\Angelos.Sanguinius\Documents\Visual Studio 2015\Projects\FilesRegister\FilesRegister\obj\Debug\FilesRegister.csproj.ResolveComReference.cache
