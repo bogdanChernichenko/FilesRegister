@@ -302,10 +302,10 @@ namespace FilesRegister
                         while (rdr.Read()) // Reading Rows
                         {
                             for (j = 1; j <= rdr.FieldCount - 1; j++) // Looping throw colums
-                            {
+                            {   
                                 if (i == 0)
                                 {
-                                    xlWorkSheet.Cells[i + 1, j ] = this.dataGridView1.Columns[j+2].HeaderText;
+                                  xlWorkSheet.Cells[i + 1, j ] = this.dataGridView1.Columns[j+2].HeaderText;  //1я строка - заголовки
                                 }
                                 else
                                 {
@@ -339,7 +339,7 @@ namespace FilesRegister
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
                 obj = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 obj = null;
             }
