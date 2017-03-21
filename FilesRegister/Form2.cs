@@ -171,7 +171,7 @@ namespace FilesRegister
                 s = dataGridView1.Rows[i].Cells[15].Value.ToString();
                 if (s.Contains("Да"))
                 {
-                    dataGridView1.Rows[i].Cells[15].Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+                    dataGridView1.Rows[i].Cells[15].Style.BackColor = System.Drawing.Color.LavenderBlush;
                 }
                 else
                 {
@@ -341,13 +341,9 @@ namespace FilesRegister
             {
                 MessageBox.Show("Файл не сохранён!", "Уведомление");
             }
-
-
-
             releaseObject(xlWorkSheet);
             releaseObject(xlWorkBook);
             releaseObject(xlApp);
-
         }
         
         //я хз что это, но это тоже нужно для экспорта

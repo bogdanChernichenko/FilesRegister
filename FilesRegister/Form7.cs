@@ -129,7 +129,7 @@ namespace FilesRegister
         {
             Form2 f2 = (Form2)this.Owner;
             int c = 0;
-
+            
             switch (comboBox1.Text)
             {
                 case "Направление":
@@ -187,7 +187,9 @@ namespace FilesRegister
                     {
                         CheckIndexes.Add(i);
                         //подсвечиваем строки в гриде
-                        f2.dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.LightSkyBlue;
+                       
+                        f2.dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(122, 197, 205);
+
                         //Не добавляем повторно, если запись уже найдена
                         if (checkedListBox1.Items.Contains(f2.dataGridView1[c, i].Value.ToString()) == false)
                         {
