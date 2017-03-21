@@ -297,15 +297,22 @@ namespace FilesRegister
 
                 using (SQLiteCommand cmd = new SQLiteCommand(stm, con))
                 {
+                    progressBar1.Visible = true;
+                    progressBar1.Minimum = 0;
+                    
+                    progressBar1.Value = 1;
+                    progressBar1.Step = 1;
                     using (SQLiteDataReader rdr = cmd.ExecuteReader())
                     {
+                        progressBar1.Maximum = rdr.FieldCount;
                         while (rdr.Read()) // Reading Rows
                         {
+
                             for (j = 1; j <= rdr.FieldCount - 1; j++) // Looping throw colums
-                            {   
+                            {
                                 if (i == 0)
                                 {
-                                  xlWorkSheet.Cells[i + 1, j ] = this.dataGridView1.Columns[j+2].HeaderText;  //1я строка - заголовки
+                                  xlWorkSheet.Cells[i + 1, j] = this.dataGridView1.Columns[j+2].HeaderText;  //1я строка - заголовки
                                   xlWorkSheet.Columns.AutoFit();
                                 }
                                 else
@@ -313,23 +320,34 @@ namespace FilesRegister
                                     data = rdr.GetValue(j).ToString();
                                     xlWorkSheet.Cells[i + 1, j ] = data;
                                 }
-
+                                progressBar1.PerformStep();
                             }
                             i++;
                         }
                     }
                 }
                 con.Close();
-                MessageBox.Show("Экспорт завершён успешно!", "Уведомление");
+                progressBar1.Visible = false;
             }
 
-            xlWorkBook.SaveAs(Directory.GetCurrentDirectory()+"\\sqliteToExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
+            try
+            {
+                xlWorkBook.SaveAs(Directory.GetCurrentDirectory() + "\\sqliteToExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
+                xlApp.Quit();
+                MessageBox.Show("Экспорт завершён успешно!", "Уведомление");
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Файл не сохранён!", "Уведомление");
+            }
+
+
 
             releaseObject(xlWorkSheet);
             releaseObject(xlWorkBook);
             releaseObject(xlApp);
+
         }
         
         //я хз что это, но это тоже нужно для экспорта
