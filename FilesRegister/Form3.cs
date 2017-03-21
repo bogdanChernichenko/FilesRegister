@@ -19,9 +19,12 @@ namespace FilesRegister
         //вернуться к авторизации
         private void button2_Click(object sender, EventArgs e)
         {
-            Form ifrm = Application.OpenForms[0];
+            //Form ifrm = Application.OpenForms[0];
+            Form1 f1 = new Form1(textBox1.Text,textBox2.Text);
             Dispose();
-            ifrm.Show();
+            f1.Show();
+            //ifrm.Show();
+            
         }      
 
         //создание нового пользователя
@@ -156,5 +159,6 @@ namespace FilesRegister
         {
             Application.Exit();
         }
+
     }
 }

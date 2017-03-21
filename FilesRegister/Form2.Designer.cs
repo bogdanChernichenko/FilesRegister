@@ -123,7 +123,7 @@ namespace FilesRegister
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1005, 305);
+            this.dataGridView1.Size = new System.Drawing.Size(1005, 292);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
@@ -267,9 +267,10 @@ namespace FilesRegister
             // 
             // button2
             // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.Location = new System.Drawing.Point(3, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(167, 30);
+            this.button2.Size = new System.Drawing.Size(167, 43);
             this.button2.TabIndex = 2;
             this.button2.Text = "Новая запись";
             this.toolTip3.SetToolTip(this.button2, "Хоткей для создания новой записи Ctrl+N");
@@ -278,9 +279,10 @@ namespace FilesRegister
             // 
             // button1
             // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Location = new System.Drawing.Point(176, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 30);
+            this.button1.Size = new System.Drawing.Size(197, 43);
             this.button1.TabIndex = 0;
             this.button1.Text = "К авторизации";
             this.button1.UseVisualStyleBackColor = true;
@@ -291,7 +293,7 @@ namespace FilesRegister
             this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button3.Location = new System.Drawing.Point(379, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(161, 30);
+            this.button3.Size = new System.Drawing.Size(161, 43);
             this.button3.TabIndex = 3;
             this.button3.Text = "Обновить таблицу";
             this.toolTip2.SetToolTip(this.button3, "Хоткей для обновления таблицы F5");
@@ -311,23 +313,24 @@ namespace FilesRegister
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button5, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.button6, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button4, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 308);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 295);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1003, 36);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1003, 49);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // button4
             // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button4.Location = new System.Drawing.Point(546, 3);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 30);
+            this.button4.Size = new System.Drawing.Size(155, 43);
             this.button4.TabIndex = 4;
             this.button4.Text = "Фильтр";
             this.toolTip1.SetToolTip(this.button4, "Хоткей для фильтра Ctrl+F");
@@ -339,9 +342,9 @@ namespace FilesRegister
             this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button5.Location = new System.Drawing.Point(707, 3);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(186, 30);
+            this.button5.Size = new System.Drawing.Size(186, 43);
             this.button5.TabIndex = 5;
-            this.button5.Text = "Показать истекающие договора";
+            this.button5.Text = "Показать заканчивающиеся и просроченные договоры";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -350,7 +353,7 @@ namespace FilesRegister
             this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button6.Location = new System.Drawing.Point(899, 3);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(26, 30);
+            this.button6.Size = new System.Drawing.Size(26, 43);
             this.button6.TabIndex = 6;
             this.button6.Text = "Экспорт";
             this.button6.UseVisualStyleBackColor = true;

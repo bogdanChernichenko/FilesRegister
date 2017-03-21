@@ -20,6 +20,16 @@ namespace FilesRegister
             LoginBox.Select();
         }
 
+        //конструктор принимающий логин и пароль из формы с созданием пользователя
+        public Form1(string log,string pass)
+        {
+            InitializeComponent();
+            LoginBox.Select();
+            LoginBox.Text = log;
+            PassBox.Text = pass;
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -70,12 +80,6 @@ namespace FilesRegister
 
         }   
 
-        //умри,сука
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }   
-
         //создание нового юзера
         private void button3_Click(object sender, EventArgs e)
         {
@@ -94,6 +98,7 @@ namespace FilesRegister
             }
         }
 
+        //кнопка выхода
         private void button2_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
@@ -138,5 +143,6 @@ namespace FilesRegister
             }
             
         }
+
     }
 }

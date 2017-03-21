@@ -17,14 +17,6 @@ namespace FilesRegister
         string _role;
         Form2 f2 = new Form2();
 
-        private void EnableDoubleBuffering()
-        {
-            this.SetStyle(ControlStyles.DoubleBuffer |
-               ControlStyles.UserPaint |
-               ControlStyles.AllPaintingInWmPaint,
-               true);
-            this.UpdateStyles();
-        }
         public Form4()
         {
             InitializeComponent();
@@ -32,7 +24,6 @@ namespace FilesRegister
 
         public Form4(string role)
         {
-            EnableDoubleBuffering();
             InitializeComponent();
             _role = role;
         }
@@ -43,6 +34,7 @@ namespace FilesRegister
             Dispose();
         }
 
+        //Не одмен не могёт редачить адрес и что там под или над ним
         private void Form4_Load(object sender, EventArgs e)
         {
             if (_role != "Админ")

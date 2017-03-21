@@ -252,7 +252,7 @@ namespace FilesRegister
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(979, 3);
+            this.button3.Location = new System.Drawing.Point(978, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(216, 44);
             this.button3.TabIndex = 22;
@@ -264,7 +264,7 @@ namespace FilesRegister
             // 
             this.button1.Location = new System.Drawing.Point(784, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 44);
+            this.button1.Size = new System.Drawing.Size(188, 44);
             this.button1.TabIndex = 21;
             this.button1.Text = "Вернуться к таблице";
             this.button1.UseVisualStyleBackColor = true;
@@ -277,7 +277,7 @@ namespace FilesRegister
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.04032F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.95968F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 238F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -655,7 +655,6 @@ namespace FilesRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::FilesRegister.Properties.Resources.klassicheskaya_zastavka_320x480;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1214, 683);
             this.Controls.Add(this.tableLayoutPanel3);

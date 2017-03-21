@@ -120,7 +120,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::FilesRegister.Properties.Resources.fon__41_;
             this.ClientSize = new System.Drawing.Size(616, 389);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
@@ -144,8 +143,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        public  System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

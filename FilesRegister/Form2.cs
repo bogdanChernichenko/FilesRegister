@@ -146,11 +146,11 @@ namespace FilesRegister
             {
                 if (BleedingDogovors() <= 4)
                 {
-                    MessageBox.Show("Найдено " + BleedingDogovors() + " договора срок которых истекает менее, чем через месяц!", "Внимание!");
+                    MessageBox.Show("Найдены " + BleedingDogovors() + " договора, срок действия которых истекает менее, чем через месяц", "Внимание!");
                 }
                 else
                 {
-                    MessageBox.Show("Найдено " + BleedingDogovors() + " договоров срок которых истекает менее, чем через месяц!", "Внимание!");
+                    MessageBox.Show("Найдены " + BleedingDogovors() + " договоров, срок действия которых истекает менее, чем через месяц", "Внимание!");
                 }
             }
         }
@@ -175,7 +175,7 @@ namespace FilesRegister
                 }
                 else
                 {
-                    dataGridView1.Rows[i].Cells[15].Style.BackColor = System.Drawing.Color.IndianRed;
+                    dataGridView1.Rows[i].Cells[15].Style.BackColor = System.Drawing.Color.White;
                 }
             }
         }
@@ -306,6 +306,7 @@ namespace FilesRegister
                                 if (i == 0)
                                 {
                                   xlWorkSheet.Cells[i + 1, j ] = this.dataGridView1.Columns[j+2].HeaderText;  //1я строка - заголовки
+                                  xlWorkSheet.Columns.AutoFit();
                                 }
                                 else
                                 {
