@@ -68,7 +68,7 @@ namespace FilesRegister
                     if (LoginBox.Text == credentials[i] && PassBox.Text == credentials[i + 1])
                         {
                             flag = true;
-                            Form2 f2q = new Form2(credentials[i + 2]);
+                            Form2 f2q = new Form2(credentials[i + 2],credentials[i]);
                             f2q.Show();
                             this.Hide();
                         }

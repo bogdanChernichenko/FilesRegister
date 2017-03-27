@@ -13,7 +13,7 @@ namespace FilesRegister
     public partial class Form2 : Form
     {
         Form1 f1 = new Form1();
-        string _role;
+        string _role,_login;
         string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
 
         //дефолтный конструктор
@@ -23,12 +23,12 @@ namespace FilesRegister
         }
 
         //костыльный конструтор получающий роль и запрещающий редачить поля не одмену
-        public Form2 (string role)
+        public Form2 (string role,string login)
             {
             InitializeComponent();
             this.KeyPreview = true;
             _role = role;
-
+            _login = login;
             if (_role != "Админ")
             {
                 this.button2.Visible = false;
@@ -99,7 +99,7 @@ namespace FilesRegister
         {
             if (e.RowIndex != -1 && e.RowIndex != dataGridView1.RowCount-1)
             {
-                Form5 f5 = new Form5(_role, dataGridView1[1, e.RowIndex].FormattedValue.ToString());
+                Form5 f5 = new Form5(_role, dataGridView1[1, e.RowIndex].FormattedValue.ToString(),_login);
                 f5.ShowDialog();
             }
 

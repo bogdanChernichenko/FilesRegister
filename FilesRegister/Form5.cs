@@ -10,7 +10,8 @@ namespace FilesRegister
     public partial class Form5 : Form
     {
         string sqQLiteConnectionString = @"Data Source =" + Directory.GetCurrentDirectory() + "\\Dv12.db;";
-        string _role,_documentId;
+        string _role,_documentId,_login;
+        List<string> documentsData = new List<string>();
 
         //дефолтный конструктор
         public Form5()
@@ -19,17 +20,12 @@ namespace FilesRegister
         }
 
         //костыльный конструтор получающий роль и ид записи по которой кликнули
-        public Form5(string role,string documentId)
+        public Form5(string role,string documentId,string login)
         {
             InitializeComponent();
 
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
-                   ControlStyles.UserPaint |
-                   ControlStyles.AllPaintingInWmPaint, true);
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-
             _role = role;
+            _login = login;
             _documentId = documentId;
 
             DataFill(documentId);
@@ -57,7 +53,6 @@ namespace FilesRegister
         //Заполнение полей данными из базы используя входящий ид записи
         private void DataFill(string documentId)
         {
-            List<string> documentsData = new List<string>();
 
             using (SQLiteConnection connection = new SQLiteConnection(sqQLiteConnectionString))
             {
@@ -176,6 +171,7 @@ namespace FilesRegister
         //Удаление записи
         private void button2_Click(object sender, EventArgs e)
         {
+            DeletionLog();
             using (SQLiteConnection connection = new SQLiteConnection(sqQLiteConnectionString))
             {
                 connection.Open();
@@ -366,6 +362,43 @@ namespace FilesRegister
             else
             {
                 textBox13.Text = "";
+            }
+        }
+
+        //Пишем лог после удаления записи
+        private void DeletionLog()
+        {
+            string curFile = Directory.GetCurrentDirectory() + "\\Deletelog.txt";
+            List<string> zagolovki = new List<string>();
+            zagolovki.Add("Направление");
+            zagolovki.Add("Адрес");
+            zagolovki.Add("Наименование");
+            zagolovki.Add("ЮрЛицо");
+            zagolovki.Add("Контрагент");
+            zagolovki.Add("НомерДоговора");
+            zagolovki.Add("Помещение");
+            zagolovki.Add("Площадь");
+            zagolovki.Add("Арендная ставка");
+            zagolovki.Add("Другие платежи");
+            zagolovki.Add("Дата окончания договора");
+            zagolovki.Add("Документы");
+            zagolovki.Add("Документ выдан");
+
+            //шапка
+            using (StreamWriter file = new StreamWriter(curFile, true))
+            {
+                file.WriteLine("Пользователь с логином: " + _login + " удалил в " + System.DateTime.Now + " запись: \n");
+
+            }
+            //сама инфа, наверняка можно красивее, но я днище, сорян
+            using (StreamWriter file = new StreamWriter(curFile, true))
+            {
+                for (int i = 0; i < documentsData.Count; i++)
+                {
+                    file.WriteLine(zagolovki[i] + ":\n" + documentsData[i] + "\n");
+                }
+                file.WriteLine("------------------------------------------------------------------------------------------------");
+                
             }
         }
 
