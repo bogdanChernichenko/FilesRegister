@@ -1,2 +1,0 @@
-Пользователь с логином: 1 удалил в 27.03.2017 0:00:00 запись: 
-System.Collections.Generic.List`1[System.String]

@@ -387,8 +387,8 @@ namespace FilesRegister
             //шапка
             using (StreamWriter file = new StreamWriter(curFile, true))
             {
-                file.WriteLine("Пользователь с логином: " + _login + " удалил в " + System.DateTime.Now + " запись: \n");
-
+                file.WriteLine("Пользователь с логином: " + _login + " удалил в " + DateTime.Now + " запись: \n");
+                file.Close();
             }
             //сама инфа, наверняка можно красивее, но я днище, сорян
             using (StreamWriter file = new StreamWriter(curFile, true))
@@ -398,7 +398,7 @@ namespace FilesRegister
                     file.WriteLine(zagolovki[i] + ":\n" + documentsData[i] + "\n");
                 }
                 file.WriteLine("------------------------------------------------------------------------------------------------");
-                
+                file.Close();
             }
         }
 
