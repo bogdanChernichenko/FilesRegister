@@ -116,7 +116,7 @@ namespace FilesRegister
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(2, 631);
+            this.button1.Location = new System.Drawing.Point(313, 631);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(179, 40);
             this.button1.TabIndex = 21;
@@ -542,7 +542,7 @@ namespace FilesRegister
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(240, 631);
+            this.button2.Location = new System.Drawing.Point(706, 631);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(199, 40);
             this.button2.TabIndex = 22;
