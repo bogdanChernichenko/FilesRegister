@@ -255,7 +255,7 @@ namespace FilesRegister
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(973, 3);
+            this.button3.Location = new System.Drawing.Point(972, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(216, 44);
             this.button3.TabIndex = 22;
@@ -265,7 +265,7 @@ namespace FilesRegister
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(780, 3);
+            this.button1.Location = new System.Drawing.Point(779, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(187, 44);
             this.button1.TabIndex = 21;
@@ -280,7 +280,7 @@ namespace FilesRegister
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.04032F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.95968F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;

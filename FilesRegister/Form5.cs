@@ -415,7 +415,7 @@ namespace FilesRegister
             zagolovki.Add("Наименование");
             zagolovki.Add("ЮрЛицо");
             zagolovki.Add("Контрагент");
-            zagolovki.Add("НомерДоговора");
+            zagolovki.Add("Номер Договора");
             zagolovki.Add("Помещение");
             zagolovki.Add("Площадь");
             zagolovki.Add("Арендная ставка");
@@ -423,6 +423,7 @@ namespace FilesRegister
             zagolovki.Add("Дата окончания договора");
             zagolovki.Add("Документы");
             zagolovki.Add("Документ выдан");
+            zagolovki.Add("Витая Пара");
 
             //шапка
             using (StreamWriter file = new StreamWriter(curFile, true))

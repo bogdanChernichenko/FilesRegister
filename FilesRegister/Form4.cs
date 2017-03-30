@@ -42,6 +42,7 @@ namespace FilesRegister
                 this.textBox1.ReadOnly = true;
                 this.textBox2.ReadOnly = true;
             }
+            comboBox3.SelectedItem = "Нет";
         }
 
         //Кнопка добавить запись
