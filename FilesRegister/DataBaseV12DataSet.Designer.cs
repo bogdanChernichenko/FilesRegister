@@ -307,6 +307,8 @@ namespace FilesRegister {
             
             private global::System.Data.DataColumn columnДокументВыдан;
             
+            private global::System.Data.DataColumn columnВитаяПара;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DocumentsDataTable() {
@@ -454,6 +456,14 @@ namespace FilesRegister {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ВитаяПараColumn {
+                get {
+                    return this.columnВитаяПара;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -489,7 +499,7 @@ namespace FilesRegister {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DocumentsRow AddDocumentsRow(System.Guid Id, string Направление, string Адрес, string НаименованиеОбъекта, string ЮрЛицоКорпорации, string Контрагент, string НомерДоговора, string Помещение, string Площадь, string АренднаяСтавка, string ДругиеПлатежи, System.DateTime ДатаОкончанияДоговора, string Документы, string ДокументВыдан) {
+            public DocumentsRow AddDocumentsRow(System.Guid Id, string Направление, string Адрес, string НаименованиеОбъекта, string ЮрЛицоКорпорации, string Контрагент, string НомерДоговора, string Помещение, string Площадь, string АренднаяСтавка, string ДругиеПлатежи, System.DateTime ДатаОкончанияДоговора, string Документы, string ДокументВыдан, string ВитаяПара) {
                 DocumentsRow rowDocumentsRow = ((DocumentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -505,7 +515,8 @@ namespace FilesRegister {
                         ДругиеПлатежи,
                         ДатаОкончанияДоговора,
                         Документы,
-                        ДокументВыдан};
+                        ДокументВыдан,
+                        ВитаяПара};
                 rowDocumentsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDocumentsRow);
                 return rowDocumentsRow;
@@ -549,6 +560,7 @@ namespace FilesRegister {
                 this.columnДатаОкончанияДоговора = base.Columns["ДатаОкончанияДоговора"];
                 this.columnДокументы = base.Columns["Документы"];
                 this.columnДокументВыдан = base.Columns["ДокументВыдан"];
+                this.columnВитаяПара = base.Columns["ВитаяПара"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -582,6 +594,8 @@ namespace FilesRegister {
                 base.Columns.Add(this.columnДокументы);
                 this.columnДокументВыдан = new global::System.Data.DataColumn("ДокументВыдан", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnДокументВыдан);
+                this.columnВитаяПара = new global::System.Data.DataColumn("ВитаяПара", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnВитаяПара);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
@@ -598,6 +612,7 @@ namespace FilesRegister {
                 this.columnДругиеПлатежи.MaxLength = 80;
                 this.columnДокументы.MaxLength = 80;
                 this.columnДокументВыдан.MaxLength = 80;
+                this.columnВитаяПара.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -959,6 +974,22 @@ namespace FilesRegister {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ВитаяПара {
+                get {
+                    try {
+                        return ((string)(this[this.tableDocuments.ВитаяПараColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ВитаяПара\' в таблице \'Documents\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDocuments.ВитаяПараColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsНаправлениеNull() {
                 return this.IsNull(this.tableDocuments.НаправлениеColumn);
             }
@@ -1111,6 +1142,18 @@ namespace FilesRegister {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetДокументВыданNull() {
                 this[this.tableDocuments.ДокументВыданColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsВитаяПараNull() {
+                return this.IsNull(this.tableDocuments.ВитаяПараColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetВитаяПараNull() {
+                this[this.tableDocuments.ВитаяПараColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1363,10 +1406,10 @@ SELECT Id, Направление, Адрес, НаименованиеОбъе�
                 " NULL) OR ([ДатаОкончанияДоговора] = @Original_ДатаОкончанияДоговора)) AND ((@Is" +
                 "Null_Документы = 1 AND [Документы] IS NULL) OR ([Документы] = @Original_Документ" +
                 "ы)) AND ((@IsNull_ДокументВыдан = 1 AND [ДокументВыдан] IS NULL) OR ([ДокументВы" +
-                "дан] = @Original_ДокументВыдан)));\r\nSELECT Id, Направление, Адрес, НаименованиеО" +
-                "бъекта, ЮрЛицоКорпорации, Контрагент, НомерДоговора, Помещение, Площадь, Арендна" +
-                "яСтавка, ДругиеПлатежи, ДатаОкончанияДоговора, Документы, ДокументВыдан FROM Doc" +
-                "uments WHERE (Id = @Id)";
+                "дан] = @Original_ДокументВыдан)));\nSELECT Id, Направление, Адрес, НаименованиеОб" +
+                "ъекта, ЮрЛицоКорпорации, Контрагент, НомерДоговора, Помещение, Площадь, Арендная" +
+                "Ставка, ДругиеПлатежи, ДатаОкончанияДоговора, Документы, ДокументВыдан FROM Docu" +
+                "ments WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Направление", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Направление", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

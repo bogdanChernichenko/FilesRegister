@@ -91,6 +91,10 @@ namespace FilesRegister
                     case "Документ Выдан":
                         c = 15;
                         break;
+                    case "Витая Пара":
+                        c = 16;
+                        break;
+
                 }
 
                 //делаем невидимыми все строки
@@ -171,6 +175,9 @@ namespace FilesRegister
                 case "Документ Выдан":
                     c = 15;
                     break;
+                case "Витая Пара":
+                    c = 16;
+                    break;
             }
             if (c != 0)
             {
@@ -191,7 +198,7 @@ namespace FilesRegister
                         f2.dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(122, 197, 205);
 
                         //Не добавляем повторно, если запись уже найдена
-                        if (checkedListBox1.Items.Contains(f2.dataGridView1[c, i].Value.ToString()) == false)
+                        if (checkedListBox1.Items.Contains(f2.dataGridView1[c, i].Value.ToString().Trim()) == false)
                         {
                             checkedListBox1.Items.AddRange(new object[]
                             {
@@ -218,7 +225,7 @@ namespace FilesRegister
                         if (f2.dataGridView1[j, i].Value.ToString().IndexOf(textBox1.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
                             //Не добавляем повторно, если запись уже найдена
-                            if (checkedListBox1.Items.Contains(f2.dataGridView1[c, i].Value.ToString()) == false)
+                            if (checkedListBox1.Items.Contains(f2.dataGridView1[c, i].Value.ToString().Trim()) == false)
                             {
                                 CheckIndexes.Add(i);
                                 checkedListBox1.Items.AddRange(new object[]

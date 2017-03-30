@@ -87,6 +87,9 @@ namespace FilesRegister
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -252,7 +255,7 @@ namespace FilesRegister
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(978, 3);
+            this.button3.Location = new System.Drawing.Point(973, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(216, 44);
             this.button3.TabIndex = 22;
@@ -262,9 +265,9 @@ namespace FilesRegister
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(784, 3);
+            this.button1.Location = new System.Drawing.Point(780, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 44);
+            this.button1.Size = new System.Drawing.Size(187, 44);
             this.button1.TabIndex = 21;
             this.button1.Text = "Вернуться к таблице";
             this.button1.UseVisualStyleBackColor = true;
@@ -277,7 +280,7 @@ namespace FilesRegister
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.04032F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.95968F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 238F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -352,17 +355,22 @@ namespace FilesRegister
             this.tableLayoutPanel4.Controls.Add(this.textBox10, 0, 6);
             this.tableLayoutPanel4.Controls.Add(this.textBox11, 2, 6);
             this.tableLayoutPanel4.Controls.Add(this.textBox13, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.label20, 0, 7);
+            this.tableLayoutPanel4.Controls.Add(this.comboBox2, 1, 7);
+            this.tableLayoutPanel4.Controls.Add(this.textBox14, 2, 7);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(582, 12);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 7;
+            this.tableLayoutPanel4.RowCount = 9;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(570, 547);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 133F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(589, 589);
             this.tableLayoutPanel4.TabIndex = 14;
             // 
             // label14
@@ -417,7 +425,7 @@ namespace FilesRegister
             this.textBox11.Location = new System.Drawing.Point(415, 322);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(152, 132);
+            this.textBox11.Size = new System.Drawing.Size(170, 127);
             this.textBox11.TabIndex = 20;
             this.textBox11.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox11_KeyDown);
             // 
@@ -429,6 +437,40 @@ namespace FilesRegister
             this.textBox13.Size = new System.Drawing.Size(261, 169);
             this.textBox13.TabIndex = 16;
             this.textBox13.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox13_KeyDown);
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(3, 458);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(64, 13);
+            this.label20.TabIndex = 21;
+            this.label20.Text = "Витая пара";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Да",
+            "Нет"});
+            this.comboBox2.Location = new System.Drawing.Point(148, 455);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(261, 21);
+            this.comboBox2.TabIndex = 22;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // textBox14
+            // 
+            this.textBox14.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBox14.Enabled = false;
+            this.textBox14.Location = new System.Drawing.Point(415, 455);
+            this.textBox14.Multiline = true;
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(170, 20);
+            this.textBox14.TabIndex = 23;
             // 
             // tableLayoutPanel3
             // 
@@ -729,5 +771,8 @@ namespace FilesRegister
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Label label7;
+        private Label label20;
+        private ComboBox comboBox2;
+        private TextBox textBox14;
     }
 }

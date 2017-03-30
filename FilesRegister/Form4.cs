@@ -48,6 +48,7 @@ namespace FilesRegister
         private void button3_Click(object sender, EventArgs e)
         {
             AddInfoToDatabase();
+            Close();
         }
 
         //метод добавления данных в базу
@@ -57,171 +58,77 @@ namespace FilesRegister
             {
                 connection.Open();
                 SQLiteCommand command = new SQLiteCommand(connection);
-                command.CommandText = "INSERT into Documents (Id,Направление,Адрес,НаименованиеОбъекта,ЮрЛицоКорпорации,Контрагент,Помещение,Площадь,АренднаяСтавка,ДругиеПлатежи,ДатаОкончанияДоговора,Документы,ДокументВыдан,НомерДоговора) values(" +"'" + System.Guid.NewGuid().ToString().ToUpper() + "'" + ",Ltrim(Rtrim(@Направление)), Ltrim(Rtrim(@Адрес)), Ltrim(Rtrim(@НаименованиеОбъекта)), Ltrim(Rtrim(@ЮрЛицоКорпорации)), Ltrim(Rtrim(@Контрагент)), Ltrim(Rtrim(@Помещение)), Ltrim(Rtrim(@Площадь)), Ltrim(Rtrim(@АренднаяСтавка)), Ltrim(Rtrim(@ДругиеПлатежи)), Ltrim(Rtrim(@ДатаОкончанияДоговора)), Ltrim(Rtrim(@Документы)), Ltrim(Rtrim(@ДокументВыдан)), Ltrim(Rtrim(@НомерДоговора)))";
+                command.CommandText = "INSERT into Documents (Id,Направление,Адрес,НаименованиеОбъекта,ЮрЛицоКорпорации,Контрагент,Помещение,Площадь,АренднаяСтавка,ДругиеПлатежи,ДатаОкончанияДоговора,Документы,ДокументВыдан,НомерДоговора,ВитаяПара) values(" +"'" + System.Guid.NewGuid().ToString().ToUpper() + "'" + ",Ltrim(Rtrim(@Направление)), Ltrim(Rtrim(@Адрес)), Ltrim(Rtrim(@НаименованиеОбъекта)), Ltrim(Rtrim(@ЮрЛицоКорпорации)), Ltrim(Rtrim(@Контрагент)), Ltrim(Rtrim(@Помещение)), Ltrim(Rtrim(@Площадь)), Ltrim(Rtrim(@АренднаяСтавка)), Ltrim(Rtrim(@ДругиеПлатежи)), Ltrim(Rtrim(@ДатаОкончанияДоговора)), Ltrim(Rtrim(@Документы)), Ltrim(Rtrim(@ДокументВыдан)), Ltrim(Rtrim(@НомерДоговора)),Ltrim(Rtrim(@ВитаяПара)))";
 
                 //Направление
-
-                SQLiteParameter napravlenie = new SQLiteParameter
-                {
-                    ParameterName = "@Направление",
-                   Value = comboBox4.Text
-                };
-                command.Parameters.Add(napravlenie);
-
-                //Адрес
-                SQLiteParameter address = new SQLiteParameter
-                {
-                    ParameterName = "@Адрес",
-                    Value = textBox1.Text
-                };
-                command.Parameters.Add(address);
-
-                //Наименование объекта
-                SQLiteParameter objectName = new SQLiteParameter
-                {
-                    ParameterName = "@НаименованиеОбъекта",
-                    Value = textBox2.Text
-                };
-                command.Parameters.Add(objectName);
-
-                //Юр.лицо корпорации
-                SQLiteParameter lawFace = new SQLiteParameter
-                {
-                    ParameterName = "@ЮрЛицоКорпорации",
-                    Value = textBox3.Text
-                };
-                command.Parameters.Add(lawFace);
-
-                //Контрагент
-                SQLiteParameter contrAgent = new SQLiteParameter
-                {
-                    ParameterName = "@Контрагент",
-                    Value = textBox4.Text
-                };
-                command.Parameters.Add(contrAgent);
-
-                //SqlParameter dogovorNum = new SqlParameter
-                string dogovorNumber;
+                command.Parameters.Add(new SQLiteParameter("@Направление", comboBox4.Text));
+                command.Parameters.Add(new SQLiteParameter("@Адрес", textBox1.Text));
+                command.Parameters.Add(new SQLiteParameter("@НаименованиеОбъекта", textBox2.Text));
+                command.Parameters.Add(new SQLiteParameter("@ЮрЛицоКорпорации", textBox3.Text));
+                command.Parameters.Add(new SQLiteParameter("@Контрагент", textBox4.Text));
+                string dogovor;
                 if (comboBox4.Text != "Коммерческая недвижимость")
                 {
-                    dogovorNumber = textBox9.Text + " " + comboBox1.Text;
+                    dogovor = textBox9.Text + " " + comboBox1.Text;
                 }
                 else
                 {
-                    dogovorNumber = textBox9.Text;
+                    dogovor = textBox9.Text;
                 }
-                SQLiteParameter dogovorNum = new SQLiteParameter
-                {
-                    ParameterName = "@НомерДоговора",
-                    Value = dogovorNumber
-                };
-                command.Parameters.Add(dogovorNum);
+                command.Parameters.Add(new SQLiteParameter("@НомерДоговора", dogovor));
 
-                //Помещение
-                string pomeshenie = "";
+                string pomeshenie;
                 if (comboBox5.Visible == false)
                 {
                     pomeshenie = textBox5.Text + "\n" + "" + "\n" + comboBox6.Text + "\n" + textBox12.Text;
-                    SQLiteParameter builing = new SQLiteParameter
-                    {
-                        ParameterName = "@Помещение",
-                        Value = pomeshenie
-                    };
-                    command.Parameters.Add(builing);
+                    command.Parameters.Add(new SQLiteParameter("@Помещение", pomeshenie));
                 }
                 else
                 {
                     pomeshenie = textBox5.Text + "\n" + comboBox5.Text + "\n" + comboBox6.Text + "\n" + textBox12.Text;
-                    SQLiteParameter builing = new SQLiteParameter
-                    {
-                        ParameterName = "@Помещение",
-                        Value = pomeshenie
-                    };
-                    command.Parameters.Add(builing);
+                    command.Parameters.Add(new SQLiteParameter("@Помещение", pomeshenie));
                 }
-                //Площадь
-                SQLiteParameter size = new SQLiteParameter
-                 {
-                    ParameterName = "@Площадь",
-                    Value = textBox6.Text
-                };
-                command.Parameters.Add(size);
-
-                //Арендная ставка
-                SQLiteParameter rentMoney = new SQLiteParameter
-                {
-                    ParameterName = "@АренднаяСтавка",
-                    Value = textBox7.Text
-                };
-                command.Parameters.Add(rentMoney);
-
-                //Другие платежи
-                SQLiteParameter otherPayments = new SQLiteParameter
-                {
-                    ParameterName = "@ДругиеПлатежи",
-                    Value = textBox8.Text
-                };
-                command.Parameters.Add(otherPayments);
-
-                //Дата окончания договора
+                command.Parameters.Add(new SQLiteParameter("@Площадь", textBox6.Text));
+                command.Parameters.Add(new SQLiteParameter("@АренднаяСтавка", textBox7.Text));
+                command.Parameters.Add(new SQLiteParameter("@ДругиеПлатежи", textBox8.Text));
 
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.CustomFormat = "yyyyMMdd";
-                SQLiteParameter endDate = new SQLiteParameter
-                {
-                    ParameterName = "@ДатаОкончанияДоговора",
-                    Value = dateTimePicker1.Text
-                };
-                command.Parameters.Add(endDate);
-
-                //Документы
-                SQLiteParameter documents = new SQLiteParameter
-                {
-                    ParameterName = "@Документы",
-                    Value = textBox13.Text
-                };
-                command.Parameters.Add(documents);
-
-                //Документ выдан
-                dateTimePicker2.Format = DateTimePickerFormat.Custom;
-                dateTimePicker2.CustomFormat = "yyyy.MM.dd";
-                string document;
+                command.Parameters.Add(new SQLiteParameter("@ДатаОкончанияДоговора", dateTimePicker1.Text));
+                command.Parameters.Add(new SQLiteParameter("@Документы", textBox13.Text));
 
                 if (comboBox3.Text == "Нет")
                 {
-                    SQLiteParameter documentsBroughtBy = new SQLiteParameter
-                    {
-                        ParameterName = "@ДокументВыдан",
-                        Value = comboBox3.Text
-                    };
-                    command.Parameters.Add(documentsBroughtBy);
-                }
-                else if (comboBox3.Text == "")
-                {
-                    SQLiteParameter documentsBroughtBy = new SQLiteParameter
-                    {
-                        ParameterName = "@ДокументВыдан",
-                        Value = "Нет"
-                    };
-                    command.Parameters.Add(documentsBroughtBy);
+                    command.Parameters.Add(new SQLiteParameter("@ДокументВыдан", comboBox3.Text));
                 }
                 else
                 {
-                   document = comboBox3.Text + "\n" + textBox10.Text + "\n" + dateTimePicker2.Text + "\n" + textBox11.Text;
-                    SQLiteParameter documentsBroughtBy = new SQLiteParameter
-                    {
-                        ParameterName = "@ДокументВыдан",
-                        Value = document
-                    };
-                    command.Parameters.Add(documentsBroughtBy);
+                    string document;
+                    dateTimePicker2.Format = DateTimePickerFormat.Custom;
+                    dateTimePicker2.CustomFormat = "yyyy.MM.dd";
+                    document = comboBox3.Text + "\n" + textBox10.Text + "\n" + dateTimePicker2.Text + "\n" + textBox11.Text;
+                    command.Parameters.Add(new SQLiteParameter("@ДокументВыдан", document));
                 }
+
+                if (comboBox2.Text == "Нет")
+                {
+                    command.Parameters.Add(new SQLiteParameter("@ВитаяПара", comboBox2.Text));
+                }
+                else
+                {
+                    string document;
+                    document = comboBox2.Text + " " + "\n" + textBox14.Text;
+                    command.Parameters.Add(new SQLiteParameter("@ВитаяПара", document));
+                }
+                
+
                 command.ExecuteNonQuery();
 
                 MessageBox.Show("Запись добавлена успешно!");
             }
         }
 
-        //Выпадающее меню Вавилон заполняет 2 текстовых поля под ним какой-то хернёй
+        //Выпадающее меню Вавилон заполняет 2 текстовых поля под ним какой-то хернёй. Делаем невидимыми башню, витую пару и тд
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox4.Text == "Вавилон")
@@ -231,6 +138,10 @@ namespace FilesRegister
                 comboBox1.Visible = true;
                 label17.Visible = true;
                 comboBox5.Visible = true;
+                label20.Visible = true;
+                comboBox2.Visible = true;
+                comboBox2.SelectedItem = "Нет";
+                textBox14.Visible = true;
             }
             else if (comboBox4.Text == "КН-ГП")
             {
@@ -239,6 +150,11 @@ namespace FilesRegister
                 comboBox1.Visible = true;
                 label17.Visible = false;
                 comboBox5.Visible = false;
+                label20.Visible = false;
+                comboBox2.Visible = false;
+                comboBox2.SelectedItem = "Нет";
+                textBox14.Visible = false;
+                textBox14.Text = "";
             }
             else
             {
@@ -247,6 +163,12 @@ namespace FilesRegister
                 comboBox1.Visible = false;
                 label17.Visible = false;
                 comboBox5.Visible = false;
+                comboBox5.Visible = false;
+                label20.Visible = false;
+                comboBox2.Visible = false;
+                comboBox2.SelectedItem = "Нет";
+                textBox14.Visible = false;
+                textBox14.Text = "";
             }
 
             //заполняем документы если ТЦ/ОФ
@@ -303,6 +225,20 @@ namespace FilesRegister
             else
             {
                 textBox13.Text = "";
+            }
+        }
+
+        //Витая, мать её, пара
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.Text == "Да")
+            {
+                textBox14.Enabled = true;
+            }
+            else
+            {
+                textBox14.Enabled = false;
+                textBox14.Text = "";
             }
         }
 
@@ -406,5 +342,6 @@ namespace FilesRegister
                 e.Handled = e.SuppressKeyPress = true;
             }
         }
+
     }
 }

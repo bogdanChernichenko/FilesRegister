@@ -45,6 +45,21 @@ namespace FilesRegister
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.dataGridView1 = new FilesRegister.Form2.DataGridViewEx();
+            this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataBaseV12DataSet = new FilesRegister.DataBaseV12DataSet();
+            this.dataBaseV12DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.documentsTableAdapter = new FilesRegister.DataBaseV12DataSetTableAdapters.DocumentsTableAdapter();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.Counter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,21 +76,7 @@ namespace FilesRegister
             this.датаОкончанияДоговораDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.документыDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.документВыданDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataBaseV12DataSet = new FilesRegister.DataBaseV12DataSet();
-            this.dataBaseV12DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.documentsTableAdapter = new FilesRegister.DataBaseV12DataSetTableAdapters.DocumentsTableAdapter();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.ВитаяПара = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBaseV12DataSet)).BeginInit();
@@ -110,7 +111,8 @@ namespace FilesRegister
             this.другиеПлатежиDataGridViewTextBoxColumn,
             this.датаОкончанияДоговораDataGridViewTextBoxColumn,
             this.документыDataGridViewTextBoxColumn,
-            this.документВыданDataGridViewTextBoxColumn});
+            this.документВыданDataGridViewTextBoxColumn,
+            this.ВитаяПара});
             this.dataGridView1.DataSource = this.documentsBindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -129,6 +131,148 @@ namespace FilesRegister
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            // 
+            // documentsBindingSource
+            // 
+            this.documentsBindingSource.DataMember = "Documents";
+            this.documentsBindingSource.DataSource = this.dataBaseV12DataSet;
+            // 
+            // dataBaseV12DataSet
+            // 
+            this.dataBaseV12DataSet.DataSetName = "DataBaseV12DataSet";
+            this.dataBaseV12DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataBaseV12DataSetBindingSource
+            // 
+            this.dataBaseV12DataSetBindingSource.DataSource = this.dataBaseV12DataSet;
+            this.dataBaseV12DataSetBindingSource.Position = 0;
+            // 
+            // documentsTableAdapter
+            // 
+            this.documentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Location = new System.Drawing.Point(3, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(167, 43);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Новая запись";
+            this.toolTip3.SetToolTip(this.button2, "Хоткей для создания новой записи Ctrl+N");
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(176, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(197, 43);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "К авторизации";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button3.Location = new System.Drawing.Point(379, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(161, 43);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Обновить таблицу";
+            this.toolTip2.SetToolTip(this.button3, "Хоткей для обновления таблицы F5");
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button5, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button6, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button4, 3, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 295);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1003, 49);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // button5
+            // 
+            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button5.Location = new System.Drawing.Point(707, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(186, 43);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Показать заканчивающиеся и просроченные договоры";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button6.Location = new System.Drawing.Point(899, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(26, 43);
+            this.button6.TabIndex = 6;
+            this.button6.Text = "Экспорт";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button4
+            // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button4.Location = new System.Drawing.Point(546, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(155, 43);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Фильтр";
+            this.toolTip1.SetToolTip(this.button4, "Хоткей для фильтра Ctrl+F");
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // toolTip3
+            // 
+            this.toolTip3.AutoPopDelay = 5000;
+            this.toolTip3.InitialDelay = 900;
+            this.toolTip3.ReshowDelay = 500;
+            this.toolTip3.ShowAlways = true;
+            // 
+            // toolTip2
+            // 
+            this.toolTip2.AutoPopDelay = 5000;
+            this.toolTip2.InitialDelay = 900;
+            this.toolTip2.ReshowDelay = 500;
+            this.toolTip2.ShowAlways = true;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 900;
+            this.toolTip1.ReshowDelay = 500;
+            this.toolTip1.ShowAlways = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(379, 185);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(322, 31);
+            this.progressBar1.TabIndex = 5;
+            this.progressBar1.Visible = false;
             // 
             // Counter
             // 
@@ -247,147 +391,12 @@ namespace FilesRegister
             this.документВыданDataGridViewTextBoxColumn.Name = "документВыданDataGridViewTextBoxColumn";
             this.документВыданDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // documentsBindingSource
+            // ВитаяПара
             // 
-            this.documentsBindingSource.DataMember = "Documents";
-            this.documentsBindingSource.DataSource = this.dataBaseV12DataSet;
-            // 
-            // dataBaseV12DataSet
-            // 
-            this.dataBaseV12DataSet.DataSetName = "DataBaseV12DataSet";
-            this.dataBaseV12DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataBaseV12DataSetBindingSource
-            // 
-            this.dataBaseV12DataSetBindingSource.DataSource = this.dataBaseV12DataSet;
-            this.dataBaseV12DataSetBindingSource.Position = 0;
-            // 
-            // documentsTableAdapter
-            // 
-            this.documentsTableAdapter.ClearBeforeFill = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(167, 43);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Новая запись";
-            this.toolTip3.SetToolTip(this.button2, "Хоткей для создания новой записи Ctrl+N");
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(176, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 43);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "К авторизации";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(379, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(161, 43);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Обновить таблицу";
-            this.toolTip2.SetToolTip(this.button3, "Хоткей для обновления таблицы F5");
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 7;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button5, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button6, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 3, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 295);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1003, 49);
-            this.tableLayoutPanel1.TabIndex = 4;
-            // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(546, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 43);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Фильтр";
-            this.toolTip1.SetToolTip(this.button4, "Хоткей для фильтра Ctrl+F");
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.Location = new System.Drawing.Point(707, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(186, 43);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Показать заканчивающиеся и просроченные договоры";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.Location = new System.Drawing.Point(899, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(26, 43);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Экспорт";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // toolTip3
-            // 
-            this.toolTip3.AutoPopDelay = 5000;
-            this.toolTip3.InitialDelay = 900;
-            this.toolTip3.ReshowDelay = 500;
-            this.toolTip3.ShowAlways = true;
-            // 
-            // toolTip2
-            // 
-            this.toolTip2.AutoPopDelay = 5000;
-            this.toolTip2.InitialDelay = 900;
-            this.toolTip2.ReshowDelay = 500;
-            this.toolTip2.ShowAlways = true;
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.AutoPopDelay = 5000;
-            this.toolTip1.InitialDelay = 900;
-            this.toolTip1.ReshowDelay = 500;
-            this.toolTip1.ShowAlways = true;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(379, 185);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(322, 31);
-            this.progressBar1.TabIndex = 5;
-            this.progressBar1.Visible = false;
+            this.ВитаяПара.DataPropertyName = "ВитаяПара";
+            this.ВитаяПара.HeaderText = "Витая Пара";
+            this.ВитаяПара.Name = "ВитаяПара";
+            this.ВитаяПара.ReadOnly = true;
             // 
             // Form2
             // 
@@ -429,6 +438,9 @@ namespace FilesRegister
         private ToolTip toolTip2;
         private ToolTip toolTip1;
         private BindingSource dataBaseV12DataSetBindingSource;
+        private Button button5;
+        private Button button6;
+        private ProgressBar progressBar1;
         private DataGridViewTextBoxColumn Counter;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
@@ -445,8 +457,6 @@ namespace FilesRegister
         private DataGridViewTextBoxColumn датаОкончанияДоговораDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn документыDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn документВыданDataGridViewTextBoxColumn;
-        private Button button5;
-        private Button button6;
-        private ProgressBar progressBar1;
+        private DataGridViewTextBoxColumn ВитаяПара;
     }
 }

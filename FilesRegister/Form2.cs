@@ -112,6 +112,7 @@ namespace FilesRegister
             paintYesNo();
             PrilozeniaCut();
             TowerAdd();
+            DoubleCable();
         }
 
         //Хоткей для фильтра и обновы таблицы
@@ -128,6 +129,7 @@ namespace FilesRegister
                 PrilozeniaCut();
                 TowerAdd();
                 paintYesNo();
+                DoubleCable();
             }
             else if (e.Control && e.KeyCode == Keys.N)
             {
@@ -142,6 +144,7 @@ namespace FilesRegister
             paintYesNo();
             PrilozeniaCut();
             TowerAdd();
+            DoubleCable();
             if (BleedingDogovors() != 0)
             {
                 if (BleedingDogovors() <= 4)
@@ -153,6 +156,7 @@ namespace FilesRegister
                     MessageBox.Show("Найдены " + BleedingDogovors() + " договоров, срок действия которых истекает менее, чем через месяц", "Внимание!");
                 }
             }
+            
         }
 
         //Открываем фильтр
@@ -203,6 +207,26 @@ namespace FilesRegister
                     dataGridView1.Rows[i].Cells[14].Value = "Документы отсутствуют";
                 }
             }
+        }
+
+        //Сокращаем запись в ячейке витая пара
+        private void DoubleCable()
+        {
+            string s = "";
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                s = dataGridView1.Rows[i].Cells[16].Value.ToString();
+                if (s.Length == 2)
+                {
+                    s = s.Substring(0);
+                }
+                else
+                {
+                    s = s.Substring(0,3);
+                }
+                dataGridView1.Rows[i].Cells[16].Value = s;
+            }
+
         }
 
         //добавляем слова ахуительная башня, невообразимый этаж и номер к ячейкам

@@ -77,6 +77,7 @@ namespace FilesRegister
                         documentsData.Add(reader.GetDateTime(11).ToString()); //ебучая дата
                         documentsData.Add(reader.GetString(12));    //документы
                         documentsData.Add(reader.GetString(13));    //документ выдан
+                        documentsData.Add(reader.GetString(14));    //Витая пара
                     }
                 }
                 reader.Close();
@@ -137,6 +138,17 @@ namespace FilesRegister
                     dateTimePicker2.Text = documentsBy[2].Trim();
                     textBox11.Text = documentsBy[3].Trim();
                 }
+                string[] doubleCable = documentsData[13].Split('\n');
+                if (doubleCable.Length == 1)
+                {
+                    comboBox2.SelectedItem = doubleCable[0].Trim();
+                }
+                else
+                {
+                    comboBox2.SelectedItem = doubleCable[0].Trim();
+                    textBox14.Text = doubleCable[1].Trim();
+                }
+
             }
 
         }
@@ -156,6 +168,7 @@ namespace FilesRegister
             textBox10.ReadOnly = true;
             textBox11.ReadOnly = true;
             textBox12.ReadOnly = true;
+            textBox13.ReadOnly = true;
 
             comboBox1.Enabled = false;
             textBox13.Enabled = false;
@@ -163,6 +176,7 @@ namespace FilesRegister
             comboBox4.Enabled = false;
             comboBox5.Enabled = false;
             comboBox6.Enabled = false;
+            comboBox2.Enabled = false;
 
             dateTimePicker1.Enabled = false;
             dateTimePicker2.Enabled = false;
@@ -241,6 +255,10 @@ namespace FilesRegister
                 comboBox1.Visible = true;
                 label17.Visible = true;
                 comboBox5.Visible = true;
+                label20.Visible = true;
+                comboBox2.Visible = true;
+                comboBox2.SelectedItem = "Нет";
+                textBox14.Visible = true;
             }
             else if (comboBox1.Text == "КН-ГП")
             {
@@ -249,12 +267,22 @@ namespace FilesRegister
                 comboBox4.Visible = true;
                 label17.Visible = false;
                 comboBox5.Visible = false;
+                label20.Visible = false;
+                comboBox2.Visible = false;
+                comboBox2.SelectedItem = "Нет";
+                textBox14.Visible = false;
+                textBox14.Text = "";
             }
             else
             {
                 comboBox4.Visible = false;
                 label17.Visible = false;
                 comboBox5.Visible = false;
+                label20.Visible = false;
+                comboBox2.Visible = false;
+                comboBox2.SelectedItem = "Нет";
+                textBox14.Visible = false;
+                textBox14.Text = "";
             }
 
             //заполняем документы если ТЦ/ОФ
@@ -285,7 +313,7 @@ namespace FilesRegister
             {
                 connection.Open();
                 SQLiteCommand command = new SQLiteCommand(sqlExpression, connection);
-                command.CommandText = "UPDATE Documents set Направление = @Направление,Адрес = @Адрес,НаименованиеОбъекта = @НаименованиеОбъекта, ЮрЛицоКорпорации = @ЮрЛицоКорпорации, Контрагент = @Контрагент, Помещение = @Помещение, Площадь = @Площадь, АренднаяСтавка = @АренднаяСтавка, ДругиеПлатежи = @ДругиеПлатежи,ДатаОкончанияДоговора =  CAST(@ДатаОкончанияДоговора AS DATETIME), Документы = @Документы, ДокументВыдан = @ДокументВыдан, НомерДоговора = @НомерДоговора WHERE Id = @Id";
+                command.CommandText = "UPDATE Documents set Направление = @Направление,Адрес = @Адрес,НаименованиеОбъекта = @НаименованиеОбъекта, ЮрЛицоКорпорации = @ЮрЛицоКорпорации, Контрагент = @Контрагент, Помещение = @Помещение, Площадь = @Площадь, АренднаяСтавка = @АренднаяСтавка, ДругиеПлатежи = @ДругиеПлатежи,ДатаОкончанияДоговора =  CAST(@ДатаОкончанияДоговора AS DATETIME), Документы = @Документы, ДокументВыдан = @ДокументВыдан, НомерДоговора = @НомерДоговора,ВитаяПара = @ВитаяПара WHERE Id = @Id";
                 command.Parameters.Add(new SQLiteParameter("@Направление", comboBox1.Text));
                 command.Parameters.Add(new SQLiteParameter("@Адрес", textBox1.Text));
                 command.Parameters.Add(new SQLiteParameter("@НаименованиеОбъекта", textBox2.Text));
@@ -335,6 +363,18 @@ namespace FilesRegister
                     dateTimePicker2.CustomFormat = "yyyy.MM.dd";
                     document = comboBox3.Text + "\n" + textBox10.Text + "\n" + dateTimePicker2.Text + "\n" + textBox11.Text;
                     command.Parameters.Add(new SQLiteParameter("@ДокументВыдан", document));
+                }
+                command.Parameters.Add(new SQLiteParameter("@Id", _documentId.ToUpper()));
+
+                if (comboBox2.Text == "Нет")
+                {
+                    command.Parameters.Add(new SQLiteParameter("@ВитаяПара", comboBox2.Text));
+                }
+                else
+                {
+                    string doubleCable;
+                    doubleCable = comboBox2.Text + "\n" + textBox14.Text + "\n" ;
+                    command.Parameters.Add(new SQLiteParameter("@ВитаяПара", doubleCable));
                 }
                 command.Parameters.Add(new SQLiteParameter("@Id", _documentId.ToUpper()));
                 command.ExecuteNonQuery();
@@ -399,6 +439,20 @@ namespace FilesRegister
                 }
                 file.WriteLine("------------------------------------------------------------------------------------------------");
                 file.Close();
+            }
+        }
+
+        //Витая пара
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.Text == "Да")
+            {
+                textBox14.Enabled = true;
+            }
+            else
+            {
+                textBox14.Enabled = false;
+                textBox14.Text = "";
             }
         }
 
