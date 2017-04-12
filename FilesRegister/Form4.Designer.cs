@@ -90,6 +90,8 @@ namespace FilesRegister
             this.label20 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -255,7 +257,7 @@ namespace FilesRegister
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(972, 3);
+            this.button3.Location = new System.Drawing.Point(970, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(216, 44);
             this.button3.TabIndex = 22;
@@ -265,7 +267,7 @@ namespace FilesRegister
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(779, 3);
+            this.button1.Location = new System.Drawing.Point(777, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(187, 44);
             this.button1.TabIndex = 21;
@@ -280,7 +282,7 @@ namespace FilesRegister
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.04032F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.95968F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 246F));
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -358,6 +360,8 @@ namespace FilesRegister
             this.tableLayoutPanel4.Controls.Add(this.label20, 0, 7);
             this.tableLayoutPanel4.Controls.Add(this.comboBox2, 1, 7);
             this.tableLayoutPanel4.Controls.Add(this.textBox14, 2, 7);
+            this.tableLayoutPanel4.Controls.Add(this.label21, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox15, 2, 2);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(582, 12);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 9;
@@ -471,6 +475,25 @@ namespace FilesRegister
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(170, 20);
             this.textBox14.TabIndex = 23;
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(415, 39);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(92, 13);
+            this.label21.TabIndex = 24;
+            this.label21.Text = "Калькулятор дат";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(415, 55);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 20);
+            this.textBox15.TabIndex = 25;
+            this.textBox15.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox15_KeyDown);
+            this.textBox15.MouseHover += new System.EventHandler(this.textBox15_MouseHover);
             // 
             // tableLayoutPanel3
             // 
@@ -774,5 +797,7 @@ namespace FilesRegister
         private Label label20;
         private ComboBox comboBox2;
         private TextBox textBox14;
+        private Label label21;
+        private TextBox textBox15;
     }
 }

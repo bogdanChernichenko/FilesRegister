@@ -245,6 +245,27 @@ namespace FilesRegister
             }
         }
 
+        //калькулятор дат
+        private void textBox15_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Enter))
+            {
+                int months = 0;
+                DateTime nowDate = Convert.ToDateTime(dateTimePicker1.Text);//DateTime.Now;
+
+                if (textBox15.Text == "")
+                {
+                    dateTimePicker1.Text = nowDate.ToString();
+                }
+                else
+                {
+                    months = Convert.ToInt32(textBox15.Text);
+                    nowDate = nowDate.AddMonths(months);
+                    dateTimePicker1.Text = nowDate.ToString();
+                }
+            }
+        }
+
         //События для выделения текста Ctrl+A
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
