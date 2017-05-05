@@ -493,7 +493,6 @@ namespace FilesRegister
             this.textBox15.Size = new System.Drawing.Size(100, 20);
             this.textBox15.TabIndex = 25;
             this.textBox15.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox15_KeyDown);
-            this.textBox15.MouseHover += new System.EventHandler(this.textBox15_MouseHover);
             // 
             // tableLayoutPanel3
             // 

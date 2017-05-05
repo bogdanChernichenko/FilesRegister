@@ -232,18 +232,34 @@ namespace FilesRegister
         //добавляем слова ахуительная башня, невообразимый этаж и номер к ячейкам
         private void TowerAdd ()
         {
+            string cell = "";
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
                 string s = dataGridView1.Rows[i].Cells[9].Value.ToString();
                 string[] word = s.Split('\n');
                 for (int j = 0; j < word.Length; j++)
                 {
-                    if (word[j].Length == 0)
+                    if (word[j].Length != 0)
                     {
-                        word[j] = "Отсутсвует";
+                        switch (j)
+                        {
+                            case 0:
+                                cell = "Помещение " + word[0] + '\n';
+                                break;
+                            case 1:
+                                cell += "Башня " + word[1] + '\n';
+                                break;
+                            case 2:
+                                cell += "Этаж " + word[2] + '\n';
+                                break;
+                            case 3:
+                                cell += "Номер " + word[3];
+                                break;
+                        }
                     }
+                    dataGridView1.Rows[i].Cells[9].Value = cell;
                 }
-                dataGridView1.Rows[i].Cells[9].Value = "Помещение " + word[0] + '\n' + "Башня " + word[1] + '\n' + "Этаж " + word[2] + '\n' + "Номер " + word[3];
+                cell = "";
             }
         }
 
